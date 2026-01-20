@@ -67,33 +67,18 @@ export function Component({prop}: ComponentProps) {
 
 ## Naming Conventions
 
-- **Files**: kebab-case (example-service.ts)
-- **Classes**: PascalCase (ExampleService)
-- **Functions**: camelCase (createDraft)
-- **Constants**: UPPER_SNAKE_CASE (MAX_RETRIES)
-- **Interfaces**: PascalCase (CreateDraftDto)
-- **React Components**: PascalCase (KanbanBoard)
+- **Files**: kebab-case (`example-service.ts`)
+- **Classes**: PascalCase (`ExampleService`)
+- **Functions**: camelCase (`createDraft`)
+- **Constants**: UPPER_SNAKE_CASE (globals)
+- **Interfaces**: PascalCase (`CreateDraftDto`)
+- **React Components**: PascalCase (`KanbanBoard`)
 
 ## File Paths
 
-### Backend Modules
-
-```
-apps/backend/src/modules/<module-name>/
-  <module-name>.module.ts
-  <module-name>.service.ts
-  <module-name>.controller.ts
-  dto/
-  __tests__/
-```
-
-### Frontend Components
-
-```
-apps/dashboard/components/
-  ComponentName.tsx
-  ComponentName.test.tsx
-```
+- **Backend**: `apps/backend/src/modules/<module-name>/`
+- **Frontend**: `apps/dashboard/components/` (UI in `ui/`)
+- **Shared**: `packages/shared/src/`
 
 ## Testing
 

@@ -92,45 +92,19 @@ export function Component({prop}: ComponentProps) {
 
 #### 4. Naming Conventions
 
-- **Files**: kebab-case (example-service.ts)
-- **Classes**: PascalCase (ExampleService)
-- **Functions**: camelCase (createDraft)
-- **Constants**: UPPER_SNAKE_CASE (MAX_RETRIES)
-- **Interfaces**: PascalCase (CreateDraftDto)
-- **React Components**: PascalCase (KanbanBoard)
+- **Files**: kebab-case (`example-service.ts`, `kanban-board.tsx`).
+- **Classes**: PascalCase (`ArchitectService`).
+- **Functions/Methods**: camelCase (`createDraft`).
+- **Constants**: UPPER_SNAKE_CASE for globals, camelCase for local.
+- **Interfaces/Types**: PascalCase (`CreateTaskDto`, `TaskStatus`).
+- **React Components**: PascalCase (`TaskCard`).
+- **Events**: kebab-case (`task-started`).
 
 #### 5. File Paths
 
-##### Backend Modules
-
-```
-apps/backend/src/modules/<module-name>/
-  <module-name>.module.ts
-  <module-name>.service.ts
-  <module-name>.controller.ts
-  dto/
-  __tests__/
-```
-
-##### Frontend Components
-
-```
-apps/dashboard/components/
-  ComponentName.tsx
-  ComponentName.test.tsx
-```
-
-#### 6. Testing Information
-
-The project uses NestJS testing utilities with Jest (for components/services) and native Node.js test runner where
-applicable.
-
-##### Unit Test Template (Jest)
-
-```typescript
-describe('ServiceName', () => {
-    let service: ServiceName;
-    let dependency: jest.Mocked<DependencyService>;
+- **Backend**: `apps/backend/src/modules/<module-name>/`
+- **Frontend**: `apps/dashboard/components/` (UI components in `ui/` subdirectory)
+- **Shared**: `packages/shared/src/`
 
     beforeEach(async () => {
         const module = await Test.createTestingModule({
