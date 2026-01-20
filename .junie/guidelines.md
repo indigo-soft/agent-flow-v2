@@ -31,11 +31,11 @@ Format: `<type>(<scope>): <description>`
 
 ##### Always Include
 
-- TypeScript types (no `any`)
-- Error handling (try/catch)
-- Input validation (DTOs)
-- JSDoc for public methods
-- Tests for new functionality
+- TypeScript types (strictly no `any`).
+- Error handling (try/catch) with appropriate logging.
+- Input validation (DTOs using `class-validator`).
+- JSDoc for public methods and complex logic.
+- Tests (Jest) for new functionality.
 
 ##### NestJS Services
 
