@@ -123,3 +123,133 @@ AI-Powered Development Workflow Assistant — це система автомат
 - **ШІ як асистент, не замінник** — ви контролюєте процес, ШІ допомагає
 - **Прозорість та історія** — все фіксується у GitHub та БД
 - **Гнучкість** — можна адаптувати під свій workflow
+
+## Швидкий старт
+
+```bash
+# Clone
+git clone https://github.com/your-org/ai-workflow-assistant.git
+cd ai-workflow-assistant
+
+# Install
+npm install
+
+# Setup environment
+cp .env.example .env
+# Заповніть . env файл
+
+# Run dev
+npm dev
+```
+
+## Розробка
+
+### Git Workflow
+
+**⚠️ ВАЖЛИВО: Перш ніж почати розробку, прочитайте [Git Workflow Guide](docs/guides/git-workflow.md)**
+
+**Коротко:**
+
+1. **Створіть гілку від main:**
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Робіть коміти за Conventional Commits:**
+   ```bash
+   git commit -m "feat(scope): description"
+   ```
+
+3. **Відкрийте Pull Request** коли готово
+
+4. **Після мерджу видаліть гілку**
+
+**Детальніше:** [docs/guides/git-workflow.md](docs/guides/git-workflow.md)
+
+### Naming Conventions
+
+**Гілки:**
+
+- `feature/architect-agent-implementation`
+- `fix/kanban-drag-drop-issue`
+- `docs/api-documentation`
+
+**Commits:**
+
+- `feat(architect): add draft creation service`
+- `fix(kanban): resolve mobile drag issue`
+- `docs(readme): update setup instructions`
+
+**Детальніше:** [docs/guides/naming-conventions.md](docs/guides/naming-conventions.md)
+
+### Код
+
+```bash
+# Lint
+npm lint
+
+# Format
+npm format
+
+# Type check
+npm type-check: all
+
+# Test
+npm test
+
+# Validate все
+npm validate
+```
+
+## Архітектурні рішення
+
+Всі архітектурні рішення документовані у [Architecture Decision Records (ADR)](docs/adr/000_README.md):
+
+- [ADR-001: Backend Framework (NestJS)](docs/adr/001-backend-framework-nestjs.md)
+- [ADR-015: Git Workflow](docs/adr/015-git-workflow-branching-strategy.md)
+- [Повний список ADR](docs/adr/000_README.md)
+
+## Структура проєкту
+
+```
+ai-workflow-assistant/
+├── apps/
+│   ├── backend/          # NestJS API + Agents
+│   └── dashboard/        # Next.js Frontend
+├── packages/
+│   └── shared/           # Shared types
+├── docs/
+│   ├── adr/              # Architecture Decision Records
+│   ├── guides/           # Developer guides
+│   └── api/              # API documentation
+└── scripts/              # Utility scripts
+```
+
+## Документація
+
+- **Для розробників:**
+    - [Git Workflow](docs/guides/git-workflow.md) ⭐
+    - [Coding Standards/Conventions](docs/guides/coding-standards.md) ⭐
+    - [Testing Guide](docs/guides/testing.md)
+    - [System Design](docs/guides/system-design.md)
+    - [Requirements](docs/guides/requirements.md)
+    - [Deployment](docs/guides/deployment.md)
+
+- **Архітектура:**
+    - [Architecture Overview](docs/architecture/overview.md)
+    - [ADR Index](docs/adr/000_README.md)
+    - [Module Structure](docs/architecture/modules.md)
+
+- **API:**
+    - [API Documentation](docs/api/README.md)
+    - [Event Schema](docs/api/events.md)
+
+## Contributing
+
+Прочитайте [CONTRIBUTING.md](CONTRIBUTING.md) перед тим як почати розробку.
+
+## License
+
+MIT
