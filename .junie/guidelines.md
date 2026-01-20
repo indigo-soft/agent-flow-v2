@@ -113,87 +113,24 @@ export function Component({prop}: ComponentProps) {
 - **Frontend**: `apps/dashboard/components/` (UI components in `ui/` subdirectory)
 - **Shared**: `packages/shared/src/`
 
-    beforeEach(async () => {
-        const module = await Test.createTestingModule({
-            providers: [
-                ServiceName,
-                {
-                    provide: DependencyService,
-                    useValue: {
-                        method: jest.fn(),
-                    },
-                },
-            ],
-        }).compile();
+#### 6. Testing
 
-        service = module.get(ServiceName);
-        dependency = module.get(DependencyService);
-    });
+- **Unit Tests**: `.spec.ts` (Backend) or `.test.tsx` (Frontend).
+- **Mocks**: Use `jest.mocked` for typed dependencies.
 
-    describe('methodName', () => {
-        it('should do something', async () => {
-            // Arrange
-            const input = {};
-            dependency.method.mockResolvedValue({});
+#### 7. Code Quality Tools
 
-            // Act
-            const result = await service.methodName(input);
+The project uses:
 
-            // Assert
-            expect(result).toBeDefined();
-            expect(dependency.method).toHaveBeenCalledWith(input);
-        });
-    });
-});
-```
-
-#### 7. Common Patterns
-
-##### Error Handling
-
-```typescript
-try {
-    // Operation
-} catch (error) {
-    this.logger.error({
-        message: 'Error description',
-        error: error.message,
-        context: {...},
-    });
-    throw new AppropriateException('User-friendly message');
-}
-```
-
-##### API Validation
-
-```typescript
-export class CreateDto {
-    @IsString()
-    @IsNotEmpty()
-    field: string;
-
-    @IsOptional()
-    @IsArray()
-    optionalField?: string[];
-}
-```
-
-##### Event Publishing
-
-```typescript
-await this.queue.add('event-name', {
-    taskId: task.id,
-    timestamp: new Date(),
-});
-```
+- **Husky** & **lint-staged**: Pre-commit checks.
+- **commitlint**: Conventional commit validation.
+- **ESLint** & **Prettier**: Linting and formatting (format on save recommended).
 
 #### 8. Documentation & References
 
-When suggesting new features or architectural changes, reference:
+Reference these for any architectural changes:
 
-- **ADRs**: `docs/adr/`
-- **Guides**: `docs/guides/`
-- **Architecture**: `docs/architecture/ARCHITECTURE.md`
-- **Git Workflow**: `docs/guides/git-workflow.md`
+- **Architecture Overview**: `docs/architecture/overview.md`
+- **ADR Index**: `docs/adr/000_README.md`
+- **Git Workflow Guide**: `docs/guides/git-workflow.md`
 - **Naming Conventions**: `docs/guides/naming-conventions.md`
-- **Contributing**: `CONTRIBUTING.md`

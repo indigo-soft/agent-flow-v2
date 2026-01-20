@@ -89,100 +89,34 @@ export function Component({prop}: ComponentProps) {
 
 ## Testing
 
-### Unit Test Template
-
+### Unit Test Template (Jest)
 ```typescript
 describe('ServiceName', () => {
     let service: ServiceName;
-    let dependency: jest.Mocked<DependencyService>;
+    let prisma: jest.Mocked<PrismaService>;
 
     beforeEach(async () => {
         const module = await Test.createTestingModule({
             providers: [
                 ServiceName,
-                {
-                    provide: DependencyService,
-                    useValue: {
-                        method: jest.fn(),
-                    },
-                },
+                {provide: PrismaService, useValue: {task: {create: jest.fn()}}},
             ],
         }).compile();
 
         service = module.get(ServiceName);
-        dependency = module.get(DependencyService);
+        prisma = module.get(PrismaService);
     });
 
-    describe('methodName', () => {
-        it('should do something', async () => {
-            // Arrange
-            const input = {};
-            dependency.method.mockResolvedValue({});
-
-            // Act
-            const result = await service.methodName(input);
-
-            // Assert
-            expect(result).toBeDefined();
-            expect(dependency.method).toHaveBeenCalledWith(input);
-        });
+    it('should do something', async () => {
+        const result = await service.method();
+        expect(result).toBeDefined();
     });
-});
-```
-
-## Documentation
-
-When suggesting new features or architectural changes, reference:
-
-- ADRs in `docs/adr/`
-- Guides in `docs/guides/`
-- Contributing guidelines in `CONTRIBUTING.md`
-
-## Common Patterns
-
-### Error Handling
-
-```typescript
-try {
-    // Operation
-} catch (error) {
-    this.logger.error({
-        message: 'Error description',
-        error: error.message,
-        context: {...},
-    });
-    throw new AppropriateException('User-friendly message');
-}
-```
-
-### API Validation
-
-```typescript
-export class CreateDto {
-    @IsString()
-    @IsNotEmpty()
-    field: string;
-
-    @IsOptional()
-    @IsArray()
-    optionalField?: string[];
-}
-```
-
-### Event Publishing
-
-```typescript
-await this.queue.add('event-name', {
-    taskId: task.id,
-    timestamp: new Date(),
 });
 ```
 
 ## Reference Documentation
 
-Full documentation:
-
-- Git Workflow: `docs/guides/git-workflow.md`
-- Naming Conventions: `docs/guides/naming-conventions.md`
-- Contributing: `CONTRIBUTING.md`
-- ADRs: `docs/adr/README.md`
+- **Architecture**: `docs/architecture/ARCHITECTURE.md`
+- **Git Workflow**: `docs/guides/git-workflow.md`
+- **Naming Conventions**: `docs/guides/naming-conventions.md`
+- **ADRs**: `docs/adr/000_README.md`
