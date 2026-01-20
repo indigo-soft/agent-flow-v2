@@ -2,7 +2,14 @@
 
 ## Project Context
 
-This is an AI-Powered Development Workflow Assistant that automates software development workflows using AI agents.
+This is an AI-Powered Development Workflow Assistant that automates software development workflows using AI agents (
+Architect, Workflow, Code Review, Documentation).
+
+**Tech Stack:**
+
+- **Backend**: NestJS (Fastify adapter), Prisma (PostgreSQL), BullMQ (Redis), Pino (Logging).
+- **Frontend**: Next.js (React), Tailwind CSS, Lucide Icons.
+- **Monorepo**: `pnpm` workspaces.
 
 ## Git Workflow
 
