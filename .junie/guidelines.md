@@ -37,14 +37,17 @@ Format: `<type>(<scope>): <description>`
 - JSDoc for public methods and complex logic.
 - Tests (Jest) for new functionality.
 
-##### NestJS Services
+##### NestJS (Fastify)
+
+Use `@fastify/static` or similar if needed, as we use the Fastify adapter.
 
 ```typescript
-
 @Injectable()
 export class ExampleService {
+    private readonly logger = new Logger(ExampleService.name);
+
     constructor(
-            private readonly dependency: DependencyService,
+            private readonly prisma: PrismaService,
     ) {
     }
 
@@ -52,14 +55,20 @@ export class ExampleService {
         try {
             // Implementation
         } catch (error) {
-            this.logger.error(`Error in exampleMethod: ${error.message}`);
-            throw new InternalServerErrorException('.. .');
+            this.logger.error({
+                message: 'Error in exampleMethod',
+                error: error.message,
+                dto
+            });
+            throw new InternalServerErrorException('Detailed error message');
         }
     }
 }
 ```
 
-##### React Components
+##### React (Next.js)
+
+Use Functional Components and Hooks. Tailwind CSS for styling.
 
 ```typescript
 interface ComponentProps {
@@ -67,14 +76,16 @@ interface ComponentProps {
 }
 
 export function Component({prop}: ComponentProps) {
-    const [state, setState] = useState<Type>(initialValue);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const handleAction = () => {
+    const handleAction = async () => {
         // Handler logic
     };
 
     return (
-            // JSX
+            <div className = "flex flex-col gap-4" >
+                    {/* JSX with Tailwind */}
+                    < /div>
     );
 }
 ```

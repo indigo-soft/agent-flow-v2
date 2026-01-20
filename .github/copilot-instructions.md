@@ -24,7 +24,6 @@ Format: `<type>(<scope>): <description>`
 - **Shared**: `shared`, `types`, `deps`, `config`.
 
 ## Code Generation Guidelines
-
 ### Always Include
 
 - TypeScript types (strictly no `any`).
@@ -33,44 +32,35 @@ Format: `<type>(<scope>): <description>`
 - JSDoc for public methods.
 - Tests (Jest) for new functionality.
 
-### NestJS Services
-
+### NestJS (Fastify)
 ```typescript
-
 @Injectable()
 export class ExampleService {
-    constructor(
-            private readonly dependency: DependencyService,
-    ) {
+    private readonly logger = new Logger(ExampleService.name);
+
+    constructor(private readonly prisma: PrismaService) {
     }
 
     async exampleMethod(dto: ExampleDto): Promise<Result> {
         try {
             // Implementation
         } catch (error) {
-            this.logger.error(`Error in exampleMethod: ${error.message}`);
-            throw new InternalServerErrorException('.. .');
+            this.logger.error({message: 'Error description', error: error.message, context: {dto}});
+            throw new InternalServerErrorException('User-friendly message');
         }
     }
 }
 ```
 
-### React Components
-
+### React (Next.js)
 ```typescript
-interface ComponentProps {
-    prop: string;
-}
-
 export function Component({prop}: ComponentProps) {
     const [state, setState] = useState<Type>(initialValue);
-
-    const handleAction = () => {
-        // Handler logic
-    };
-
+    // Use Tailwind CSS for styling
     return (
-            // JSX
+            <div className = "flex flex-col p-4 bg-white rounded-lg shadow" >
+                    {/* JSX */}
+                    < /div>
     );
 }
 ```
