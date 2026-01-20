@@ -116,7 +116,7 @@ describe('ServiceName', () => {
 
 ## Reference Documentation
 
-- **Architecture**: `docs/architecture/ARCHITECTURE.md`
+- **Architecture**: `docs/architecture/overview.md`
 - **Git Workflow**: `docs/guides/git-workflow.md`
 - **Naming Conventions**: `docs/guides/naming-conventions.md`
 - **ADRs**: `docs/adr/000_README.md`
