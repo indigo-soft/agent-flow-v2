@@ -6,30 +6,22 @@ This is an AI-Powered Development Workflow Assistant that automates software dev
 
 ## Git Workflow
 
-**IMPORTANT: Always follow Conventional Commits**
-
-### Commit Format
-
-```
-<type>(<scope>): <description>
-```
-
-### Examples
-
-```
-feat(architect): add draft creation service
-fix(kanban): resolve drag and drop on mobile  
-docs(readme): update installation instructions
-test(workflow): add unit tests for branch creation
-```
+**IMPORTANT: Always follow Conventional Commits and GitHub Flow.**
 
 ### Branch Names
 
-```
-feature/descriptive-name
-fix/bug-description
-docs/documentation-update
-```
+Format: `<type>/<issue-number>-<short-description>` (e.g., `feature/123-architect-agent`)
+
+### Commit Format
+
+Format: `<type>(<scope>): <description>`
+
+**Scopes:**
+
+- **Backend**: `architect`, `workflow`, `code-review`, `documentation`, `github`, `ai-provider`, `database`, `queue`,
+  `api`, `common`.
+- **Frontend**: `kanban`, `draft-viewer`, `conversation-form`, `ui`, `lib`.
+- **Shared**: `shared`, `types`, `deps`, `config`.
 
 ## Code Generation Guidelines
 
