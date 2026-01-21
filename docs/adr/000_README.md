@@ -204,5 +204,5 @@ Proposed → Accepted → Deprecated → Superseded
 ## Корисні посилання
 
 - [ADR GitHub Org](https://adr.github.io/) — колекція ADR templates
-- [Thoughtworks on ADR](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records)
+- [ThoughtWorks on ADR](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records)
 - [ADR Tools](https://github.com/npryce/adr-tools) — CLI для управління ADR
