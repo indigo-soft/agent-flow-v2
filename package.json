@@ -1,13 +1,30 @@
 {
-  "name": "agent-flow-v2.local",
+  "name": "agent-flow-v2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "AI-Powered Development Workflow Assistant",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "start": "pnpm -r start",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "type": "module"
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "pnpm": {
+    "workspaces": [
+      "apps/*",
+      "packages/*"
+    ]
+  }
 }
