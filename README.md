@@ -210,18 +210,27 @@ pnpm test
 
 ## Структура проєкту
 
+Використовується **Flat Modular Structure** (див. [ADR-018](docs/adr/018-file-structure-flat-modular.md)):
+
 ```
 ai-workflow-assistant/
-├── apps/
-│   ├── backend/          # NestJS API + Agents
-│   └── dashboard/        # Next.js Frontend
-├── packages/
-│   └── shared/           # Shared types
-├── docs/
-│   ├── adr/              # Architecture Decision Records
-│   ├── guides/           # Developer guides
-│   └── api/              # API documentation
-└── scripts/              # Utility scripts
+├── src/                    # 🎯 ВЕСЬ КОД ТУТ
+│   ├── agents/             # 🤖 AI Агенти (architect, workflow, etc.)
+│   ├── api/                # 🌐 Backend API (REST)
+│   ├── dashboard/          # 🎨 Frontend (Next.js)
+│   ├── core/               # 🧠 Shared backend (guards, filters, etc.)
+│   ├── database/           # 🗄️ Prisma + models
+│   ├── queue/              # 📬 BullMQ
+│   ├── integrations/       # 🔌 GitHub, AI Provider
+│   ├── logger/             # 📝 Pino
+│   ├── config/             # ⚙️ Configuration
+│   ├── shared/             # 🔗 Shared між backend/frontend
+│   ├── app.module.ts       # Root module
+│   └── main.ts             # Entry point
+├── tests/                  # 🧪 E2E tests
+├── scripts/                # 🛠️ Utility scripts
+├── docs/                   # 📚 Documentation
+└── [config files]
 ```
 
 ## Документація

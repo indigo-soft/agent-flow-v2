@@ -2,11 +2,13 @@
 
 ## Статус
 
-Прийнято
+Superseded by [ADR-018](018-file-structure-flat-modular.md)
 
 ## Контекст
 
-Проєкт складається з:
+**УВАГА: Це рішення було змінене на користь Flat Modular Structure (ADR-018).**
+
+Проєкт складався з:
 
 - Backend (NestJS)
 - Frontend (Next.js)

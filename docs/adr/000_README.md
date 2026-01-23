@@ -56,16 +56,17 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 
 ### Cross-cutting
 
-| #                                             | Назва                               | Статус   | Дата       |
-|-----------------------------------------------|-------------------------------------|----------|------------|
-| [008](008-data-validation-strategy.md)        | Data Validation Strategy            | Accepted | 2024-01-20 |
-| [009](009-monorepo-structure.md)              | Monorepo Structure                  | Accepted | 2024-01-20 |
-| [010](010-error-handling-strategy.md)         | Error Handling Strategy             | Accepted | 2024-01-20 |
-| [011](011-code-formatting-prettier.md)        | Code Formatting (Prettier)          | Accepted | 2024-01-20 |
-| [012](012-code-linting-eslint.md)             | Code Linting (ESLint)               | Accepted | 2024-01-20 |
-| [013](013-git-hooks-husky-lint-staged.md)     | Git Hooks (Husky + lint-staged)     | Accepted | 2024-01-20 |
-| [014](014-tools-summary.md)                   | Tools Summary                       | Accepted | 2024-01-20 |
-| [015](015-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy | Accepted | 2024-01-20 |
+| #                                             | Назва                               | Статус     | Дата       |
+|-----------------------------------------------|-------------------------------------|------------|------------|
+| [008](008-data-validation-strategy.md)        | Data Validation Strategy            | Accepted   | 2024-01-20 |
+| [009](009-monorepo-structure.md)              | Monorepo Structure                  | Superseded | 2024-01-20 |
+| [010](010-error-handling-strategy.md)         | Error Handling Strategy             | Accepted   | 2024-01-20 |
+| [011](011-code-formatting-prettier.md)        | Code Formatting (Prettier)          | Accepted   | 2024-01-20 |
+| [012](012-code-linting-eslint.md)             | Code Linting (ESLint)               | Accepted   | 2024-01-20 |
+| [013](013-git-hooks-husky-lint-staged.md)     | Git Hooks (Husky + lint-staged)     | Accepted   | 2024-01-20 |
+| [014](014-tools-summary.md)                   | Tools Summary                       | Accepted   | 2024-01-20 |
+| [015](015-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy | Accepted   | 2024-01-20 |
+| [018](018-file-structure-flat-modular.md)     | Flat Modular File Structure         | Accepted   | 2024-01-20 |
 
 ### Tooling & Infrastructure
 
