@@ -132,14 +132,14 @@ git clone https://github.com/your-org/ai-workflow-assistant.git
 cd ai-workflow-assistant
 
 # Install
-npm install
+pnpm install
 
 # Setup environment
 cp .env.example .env
-# Заповніть . env файл
+# Заповніть .env файл
 
 # Run dev
-npm dev
+pnpm dev
 ```
 
 ## Розробка
@@ -188,19 +188,16 @@ npm dev
 
 ```bash
 # Lint
-npm lint
+pnpm lint
 
 # Format
-npm format
+pnpm format
 
 # Type check
-npm type-check: all
+pnpm typecheck
 
 # Test
-npm test
-
-# Validate все
-npm validate
+pnpm test
 ```
 
 ## Архітектурні рішення
