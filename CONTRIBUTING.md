@@ -83,11 +83,11 @@ git push -u origin feature/my-feature
 Перед створенням PR переконайтесь, що:
 
 - [ ] Код відповідає [Coding Standards](docs/guides/coding-standards.md)
-- [ ] Усі тести проходять (`npm test`)
+- [ ] Усі тести проходять (`pnpm test`)
 - [ ] Додано нові тести (якщо потрібно)
-- [ ] ESLint перевірка пройшла (`npm lint`)
-- [ ] Prettier форматування виконано (`npm format`)
-- [ ] Type check пройшов (`npm type-check:all`)
+- [ ] ESLint перевірка пройшла (`pnpm lint`)
+- [ ] Prettier форматування виконано (`pnpm format`)
+- [ ] Type check пройшов (`pnpm typecheck`)
 - [ ] Оновлено документацію (якщо потрібно)
 - [ ] Commit messages відповідають Conventional Commits
 - [ ] PR має описовий title
@@ -109,16 +109,13 @@ GitHub автоматично підставить template (див. [`.github/P
 
 ```bash
 # Run all tests
-npm test
+pnpm test
 
 # Run tests for specific module
-npm --filter backend test
+pnpm --filter @agent-flow/backend test
 
 # Run tests in watch mode
-npm test --watch
-
-# Coverage
-npm test --coverage
+pnpm test --watch
 ```
 
 ## 🎨 Code Style
