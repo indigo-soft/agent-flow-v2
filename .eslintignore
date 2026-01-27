@@ -8,3 +8,4 @@ coverage
 .eslintrc.js
 commitlint.config.js
 .lintstagedrc.js
+/logs/

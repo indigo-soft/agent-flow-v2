@@ -79,7 +79,8 @@ fabric.properties
 
 ### Node template
 # Logs
-logs
+/logs/*.*
+!/logs/.gitkeep
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -204,3 +205,4 @@ web_modules/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+!/logs/
