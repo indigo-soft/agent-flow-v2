@@ -67,6 +67,10 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 | [014](014-tools-summary.md)                   | Tools Summary                       | Accepted   | 2024-01-20 |
 | [015](015-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy | Accepted   | 2024-01-20 |
 | [018](018-file-structure-flat-modular.md)     | Flat Modular File Structure         | Accepted   | 2024-01-20 |
+| [019](019-security-strategy.md)               | Security Strategy                   | Accepted   | 2026-01-27 |
+| [020](020-state-management-strategy.md)       | State Management Strategy           | Accepted   | 2026-01-27 |
+| [021](021-observability-strategy.md)          | Observability Strategy              | Accepted   | 2026-01-27 |
+| [022](022-api-design-strategy.md)             | API Design Strategy                 | Accepted   | 2026-01-27 |
 
 ### Tooling & Infrastructure
 
