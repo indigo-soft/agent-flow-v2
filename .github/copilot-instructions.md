@@ -17,11 +17,19 @@ Architect, Workflow, Code Review, Documentation).
 
 ### Branch Names
 
-Format: `<type>/<issue-number>-<short-description>` (e.g., `feature/123-architect-agent`)
+Format: `<type>/<issue-number>-<short-description>` (e.g., `feature/0123-architect-agent`)
+
+**Rules:**
+
+- Issue number is **REQUIRED** (minimum 4 digits with leading zeros if needed)
+- All changes must be linked to an issue
+- Examples: `feature/0001-initial-setup`, `fix/0042-bug-fix`, `feature/1234-new-feature`
 
 ### Commit Format
 
 Format: `<type>(<scope>): <description>`
+
+**⚠️ ВАЖЛИВО: Scope є ОБОВ'ЯЗКОВИМ!**
 
 **Scopes:**
 
@@ -29,6 +37,14 @@ Format: `<type>(<scope>): <description>`
   `api`, `common`.
 - **Frontend**: `kanban`, `draft-viewer`, `conversation-form`, `ui`, `lib`.
 - **Shared**: `shared`, `types`, `deps`, `config`.
+
+**Rules:**
+
+- Scope must be in kebab-case
+- Scope cannot be empty
+- Description in lowercase (sentence-case)
+- Max 72 characters
+- No period at the end
 
 ## Code Generation Guidelines
 ### Always Include

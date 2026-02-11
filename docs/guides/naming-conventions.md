@@ -9,8 +9,16 @@
 **Формат:**
 
 ```
-<type>/<description>
+<type>/<issue-number>-<short-description>
 ```
+
+**⚠️ ВАЖЛИВО:** Номер issue є **ОБОВ'ЯЗКОВИМ**. Усі зміни повинні бути прив'язані до issue.
+
+**Правила номерів issue:**
+
+- Мінімум 4 цифри
+- Якщо номер < 1000, додати нулі спереду (наприклад: 0001, 0042, 0123)
+- Якщо номер ≥ 1000, використовувати як є (наприклад: 1234, 5678)
 
 **Types:**
 
@@ -28,14 +36,25 @@
 - Kebab-case (слова через `-`)
 - Англійська мова
 - Описово (3–5 слів)
+- **Обов'язковий номер issue (4 цифри мінімум)**
+- Якщо немає issue — створіть його перед початком роботи
 
 **Приклади:**
 
 ```
-feature/architect-agent-implementation
-fix/kanban-drag-drop-mobile
-docs/api-documentation
-chore/update-dependencies
+feature/0001-architect-agent-implementation
+feature/0123-kanban-drag-drop-mobile
+fix/0042-database-connection-timeout
+docs/0099-api-documentation
+chore/1234-update-dependencies
+```
+
+**❌ Неприйнятні назви:**
+
+```
+feature/new-feature                  # Немає номеру issue
+fix/123-bug-fix                      # Менше 4 цифр
+feature/architect-agent              # Немає номеру issue
 ```
 
 ### Commits

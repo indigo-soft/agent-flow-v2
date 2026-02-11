@@ -150,12 +150,14 @@ pnpm dev
 
 **Коротко:**
 
-1. **Створіть гілку від main:**
+1. **Створіть issue, потім гілку від main:**
    ```bash
    git checkout main
    git pull origin main
-   git checkout -b feature/your-feature-name
+   git checkout -b feature/0123-your-feature-name
    ```
+
+   ⚠️ Номер issue обов'язковий (мінімум 4 цифри, наприклад: 0001, 0042, 1234)
 
 2. **Робіть коміти за Conventional Commits:**
    ```bash
@@ -172,9 +174,11 @@ pnpm dev
 
 **Гілки:**
 
-- `feature/architect-agent-implementation`
-- `fix/kanban-drag-drop-issue`
-- `docs/api-documentation`
+- `feature/0001-architect-agent-implementation`
+- `fix/0042-kanban-drag-drop-issue`
+- `docs/0099-api-documentation`
+
+⚠️ **Номер issue обов'язковий** (мінімум 4 цифри)
 
 **Commits:**
 

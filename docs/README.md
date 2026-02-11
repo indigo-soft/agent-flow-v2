@@ -55,7 +55,8 @@ Architecture Decision Records документують важливі архіт
 A: Прочитайте [Git Workflow Guide](guides/git-workflow.md)
 
 **Q: Як називати гілки?**  
-A:  Формат `<type>/<description>`, детально у [Naming Conventions](guides/naming-conventions.md)
+A:  Формат `<type>/<issue-number>-<short-description>` (мінімум 4 цифри для issue), детально
+у [Naming Conventions](guides/naming-conventions.md) та [Git Workflow](guides/git-workflow.md)
 
 **Q: Як писати commit messages?**  
 A: Conventional Commits, детально у [Git Workflow](guides/git-workflow.md#commit-messages)

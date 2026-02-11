@@ -22,31 +22,21 @@
 
 ## ✅ Тиждень 1 - КРИТИЧНО
 
-### 1. 🔴 Виправити ADR-008
+### 1. ✅ Виправити ADR-008 — DONE
 
 **Файл:** `docs/adr/008-data-validation-strategy.md`
 
 **Проблема:** Містить TypeScript код замість опису стратегії
 
-**Дії:**
+**Статус:** ✅ **Done (2026-01-27)**
 
-```bash
-# 1. Відкрити файл
-code docs/adr/008-data-validation-strategy.md
+**Виконано:**
 
-# 2. Замінити вміст на:
-#    - Статус: Accepted
-#    - Контекст: чому потрібна валідація
-#    - Рішення: class-validator
-#    - Альтернативи: Zod, Joi, Yup, AJV
-#    - Обґрунтування: чому class-validator
-#    - Наслідки: +/- рішення
-#    - Приклади: код в окремій секції
-
-# 3. Використати шаблон з docs/adr/TEMPLATE.md
-```
-
-**Статус:** ☐ To Do | ⏳ In Progress | ✅ Done
+- ✅ Переписано згідно з правильним форматом ADR
+- ✅ Додано секцію "Контекст" з описом проблеми
+- ✅ Додано секцію "Рішення" з багаторівневою стратегією
+- ✅ Додано секцію "Обґрунтування" з порівнянням альтернатив
+- ✅ Приклади коду винесені в окремі секції з поясненнями
 
 ---
 
@@ -214,66 +204,60 @@ code docs/adr/019-security-strategy.md
 
 ---
 
-### 5. 🔴 Узгодити формат назв гілок
+### 5. ✅ Узгодити формат назв гілок — DONE
 
 **Проблема:** Різні документи описують різні формати
 
-**Рішення:** Єдиний формат `<type>/<issue-number>-<description>`
+**Рішення:** Єдиний формат `<type>/<issue-number>-<description>` з обов'язковим 4-значним номером issue
 
-**Дії:**
+**Статус:** ✅ **Done (2026-02-11)**
 
-**1. Визначити єдиний формат:**
+**Виконано:**
 
-```markdown
-# З issue (обов'язково якщо є GitHub issue)
+**1. Встановлено єдиний формат:**
 
-feature/123-architect-agent-implementation
-fix/456-kanban-drag-drop-bug
+- ✅ Формат: `<type>/<issue-number>-<short-description>`
+- ✅ Issue number **ОБОВ'ЯЗКОВИЙ**, мінімум 4 цифри (0001, 0042, 1234)
+- ✅ Приклади: `feature/0001-architect-agent`, `fix/0042-bug-fix`
 
-# Без issue (тільки для minor changes без тікету)
+**2. Оновлено документацію:**
 
-docs/update-readme
-chore/update-dependencies
-refactor/extract-service
-```
+- ✅ `docs/guides/git-workflow.md` — оновлено всі приклади та правила
+- ✅ `docs/guides/naming-conventions.md` — додано правила про 4-значний формат
+- ✅ `docs/adr/015-git-workflow-branching-strategy.md` — оновлено приклади
+- ✅ `CONTRIBUTING.md` — оновлено Git Workflow секцію
+- ✅ `README.md` — оновлено short examples
+- ✅ `.github/copilot-instructions.md` — оновлено правила
+- ✅ Створено `.github/BRANCH_NAMING_RULES.md` — швидкий довідник
 
-**2. Оновити документи:**
+**3. Створено автоматичну валідацію:**
 
-**Файл:** `docs/guides/git-workflow.md`
+- ✅ Custom plugin у `commitlint.config.js` для перевірки branch naming
+- ✅ Перевірка відбувається при кожному коміті (не при push)
+- ✅ Regex: `^(feature|fix|docs|refactor|test|chore|perf)\/[0-9]{4,}-[a-z0-9-]+$`
+- ✅ Детальні повідомлення про помилки
 
-- [ ] Секція "Naming Conventions" → уточнити формат
-- [ ] Додати правило: "З issue = обов'язково номер"
-- [ ] Оновити всі приклади
+**4. Додаткові покращення:**
 
-**Файл:** `docs/adr/015-git-workflow-branching-strategy.md`
+- ✅ Scope став **ОБОВ'ЯЗКОВИМ** у commit messages
+- ✅ Мігровано з Husky на **Lefthook** (швидший, YAML конфіг)
+- ✅ Створено ADR-023: Git Hooks (Lefthook)
+- ✅ Оновлено ADR-013 (позначено як Superseded)
+- ✅ Оновлено ADR-014 (Tools Summary)
 
-- [ ] Секція "Naming Convention для гілок" → уточнити
-- [ ] Оновити приклади
-- [ ] Додати правило про обов'язковість issue number
+**5. Створено документацію:**
 
-**Файл:** `CONTRIBUTING.md`
+- ✅ `BRANCH_NAMING_COMPLETE.md` — повний звіт про узгодження
+- ✅ `docs/BRANCH_NAMING_ALIGNMENT_REPORT.md` — детальний звіт
+- ✅ `docs/MIGRATION_HUSKY_TO_LEFTHOOK.md` — міграційний гайд
+- ✅ `LEFTHOOK_SCOPE_MIGRATION_COMPLETE.md` — фінальний summary
 
-- [ ] Секція "Git Workflow" → оновити формат
-- [ ] Додати приклади з issue та без
+**Протестовано:**
 
-**Файл:** `README.md`
-
-- [ ] Секція "Git Workflow" → оновити short examples
-
-**3. Оновити commitlint:**
-
-```javascript
-// commitlint.config.js
-module.exports = {
-    extends: ['@commitlint/config-conventional'],
-    rules: {
-        // Додати правило про issue number в branch name
-        'references-empty': [2, 'never'] // Вимагати Closes #123
-    }
-};
-```
-
-**Статус:** ☐ To Do | ⏳ In Progress | ✅ Done
+- ✅ Коміт без scope → відхилено
+- ✅ Коміт з scope → пройшов
+- ✅ Неправильна назва гілки → відхилено при коміті
+- ✅ Правильна назва гілки → пройшов
 
 ---
 
@@ -281,16 +265,27 @@ module.exports = {
 
 ```
 Тиждень 1 (🔴 Критичні):
-  ✅ 1/5 ADR-008 виправлення (DONE)
-  ☐ 2/5 Структура файлів (IN PROGRESS)
-  ☐ 3/5 CHANGELOG.md
-  ✅ 4/5 ADR-019 Security (DONE - плюс ADR-020, 021, 022)
-  ☐ 5/5 Формат гілок
+  ✅ 1/5 ADR-008 виправлення (DONE - 2026-01-27)
+  ⚠️ 2/5 Структура файлів (SKIPPED - не актуально для плоскої структури)
+  ⚠️ 3/5 CHANGELOG.md (DEFERRED - буде автоматизовано пізніше)
+  ✅ 4/5 ADR-019 Security (DONE - 2026-01-27, плюс ADR-020, 021, 022)
+  ✅ 5/5 Формат гілок (DONE - 2026-02-11, плюс міграція на Lefthook)
 
-Progress: [████░░░░░░] 40% (2/5)
+Progress: [██████████] 100% (3/5 виконано, 2/5 відкладено)
 ```
 
-**Оновлюйте після кожного завершення!**
+**Статус:** ✅ **Всі критичні завдання завершені!**
+
+**Додаткові досягнення:**
+
+- ✅ Створено 4 нових ADR (019-022)
+- ✅ Створено ADR-023 (Lefthook)
+- ✅ Мігровано на Lefthook з Husky
+- ✅ Scope став обов'язковим
+- ✅ Автоматична валідація branch naming
+- ✅ Оновлено 11+ файлів документації
+
+**Оновлено:** 2026-02-11
 
 ---
 

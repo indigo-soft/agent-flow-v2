@@ -13,17 +13,19 @@
 ### TL;DR
 
 ```bash
-# 1. Створити гілку
-git checkout -b feature/my-feature
+# 1. Створити гілку (issue number ОБОВ'ЯЗКОВИЙ!)
+git checkout -b feature/0123-my-feature
 
 # 2. Робити коміти
 git commit -m "feat(scope): description"
 
 # 3. Push
-git push -u origin feature/my-feature
+git push -u origin feature/0123-my-feature
 
 # 4. Відкрити PR на GitHub
 ```
+
+**⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри). Створіть issue перед початком роботи!
 
 ### Детальний процес
 
@@ -38,8 +40,10 @@ git push -u origin feature/my-feature
    ```bash
    git checkout main
    git pull origin main
-   git checkout -b feature/descriptive-name
+   git checkout -b feature/0123-descriptive-name
    ```
+
+   **⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри з нулями спереду якщо потрібно).
 
 3. **Зробіть зміни**
     - Пишіть код
@@ -61,7 +65,11 @@ git push -u origin feature/my-feature
    [optional footer]
    ```
 
+   **⚠️ ВАЖЛИВО: Scope є ОБОВ'ЯЗКОВИМ!**
+
    **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+   **Scopes:** `architect`, `workflow`, `kanban`, `ui`, `database`, `api`, `deps`, `config`, тощо
 
    **Приклади:**
    ```bash
@@ -69,11 +77,19 @@ git push -u origin feature/my-feature
    fix(kanban): resolve drag and drop on mobile
    docs(readme): update installation steps
    test(workflow): add unit tests for branch creation
+   chore(deps): update prettier to 3.8.1
+   ```
+
+   **Назва гілки:**
+   ```bash
+   feature/0001-architect-agent
+   fix/0042-kanban-drag-drop
+   docs/0099-readme-update
    ```
 
 5. **Push та створіть PR**
    ```bash
-   git push -u origin feature/descriptive-name
+   git push -u origin feature/0123-descriptive-name
    ```
 
    Потім відкрийте PR на GitHub.

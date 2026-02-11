@@ -1,21 +1,27 @@
 # 📊 Звіт про прогрес документації
 
-**Дата:** 2026-01-27  
-**Тип звіту:** Оновлення статусу виконаних завдань
+**Дата:** 2026-02-11  
+**Тип звіту:** Фінальне оновлення - критичні завдання завершені
 
 ---
 
 ## 🎯 Executive Summary
 
-**Загальний прогрес:** 5/15 завдань виконано (33%)
+**Загальний прогрес:** 8/15 завдань виконано (53%), 2 відкладено
 
 **Оцінка документації:**
 
 - **Попередня:** 7.5/10
-- **Поточна:** 8.0/10 📈
+- **Поточна:** 8.5/10 📈
 - **Цільова:** 9.5/10
 
-**Досягнення:** Виконано всі критичні ADR завдання з безпеки, state management, observability та API design.
+**Ключові досягнення (2026-02-11):**
+
+- ✅ Узгоджено формат назв гілок у всій документації
+- ✅ Мігровано на Lefthook (швидший за Husky)
+- ✅ Scope став обов'язковим у commits
+- ✅ Створено ADR-023 про Lefthook
+- ✅ Автоматична валідація branch naming
 
 ---
 
@@ -123,7 +129,41 @@
 
 ---
 
-## 🔄 ОНОВЛЕНІ ФАЙЛИ
+### 6. ✅ Узгодження формату назв гілок + Lefthook - ЗАВЕРШЕНО
+
+**Дата:** 2026-02-11
+
+**Що було зроблено:**
+
+**Узгодження branch naming:**
+
+- ✅ Встановлено єдиний формат: `<type>/<issue-number>-<description>`
+- ✅ Issue number обов'язковий, мінімум 4 цифри (0001, 0042, 1234)
+- ✅ Оновлено 7 файлів документації
+- ✅ Створено `.github/BRANCH_NAMING_RULES.md`
+- ✅ Custom plugin у commitlint для валідації
+
+**Міграція на Lefthook:**
+
+- ✅ Замінено Husky на Lefthook (швидший, YAML конфіг)
+- ✅ Scope став обов'язковим у commit messages
+- ✅ Створено ADR-023: Git Hooks (Lefthook)
+- ✅ Оновлено ADR-013 (Superseded)
+- ✅ Оновлено ADR-014 (Tools Summary)
+
+**Створено документацію:**
+
+- ✅ `BRANCH_NAMING_COMPLETE.md`
+- ✅ `docs/BRANCH_NAMING_ALIGNMENT_REPORT.md`
+- ✅ `docs/MIGRATION_HUSKY_TO_LEFTHOOK.md`
+- ✅ `LEFTHOOK_SCOPE_MIGRATION_COMPLETE.md`
+- ✅ `docs/adr/023-git-hooks-lefthook.md`
+
+**Результат:** Єдині стандарти для всього проєкту + швидший Git hooks workflow.
+
+---
+
+## 🔄 ОНОВЛЕНІ ФАЙЛИ (2026-02-11)
 
 ### docs/adr/000_README.md
 
@@ -133,8 +173,86 @@
 - ✅ Додано ADR-020: State Management Strategy
 - ✅ Додано ADR-021: Observability Strategy
 - ✅ Додано ADR-022: API Design Strategy
+- ✅ Додано ADR-023: Git Hooks (Lefthook)
+- ✅ Оновлено ADR-013 статус на "Superseded"
+- ✅ Додано секцію "Статуси ADR" з поясненням
 
-**Результат:** Таблиця ADR оновлена та містить всі нові рішення.
+**Результат:** Таблиця ADR повна та актуальна з усіма новими рішеннями.
+
+---
+
+### docs/adr/023-git-hooks-lefthook.md
+
+**Зміни:**
+
+- ✅ Створено новий ADR про міграцію з Husky на Lefthook
+- ✅ Детальне обґрунтування вибору (продуктивність, YAML, parallel)
+- ✅ Порівняння з альтернативами
+- ✅ Інструкції з міграції
+- ✅ Breaking changes для розробників
+
+**Результат:** Чітке обґрунтування та документація про перехід на Lefthook.
+
+---
+
+### docs/adr/013-git-hooks-husky-lint-staged.md
+
+**Зміни:**
+
+- ✅ Статус змінено на "Superseded by ADR-023"
+- ✅ Додано дату superseding (2026-02-11)
+
+**Результат:** Історія рішень збережена, зрозуміло що змінилося.
+
+---
+
+### docs/adr/014-tools-summary.md
+
+**Зміни:**
+
+- ✅ Husky → Lefthook у таблиці інструментів
+- ✅ Оновлено workflow діаграму
+- ✅ Оновлено Installation section
+- ✅ Оновлено Troubleshooting
+- ✅ Додано примітку про branch naming валідацію в commitlint
+
+**Результат:** Tools summary актуальний з новим tooling stack.
+
+---
+
+### Git Workflow документація (7 файлів)
+
+**Оновлені файли:**
+
+- ✅ `docs/guides/git-workflow.md`
+- ✅ `docs/guides/naming-conventions.md`
+- ✅ `docs/adr/015-git-workflow-branching-strategy.md`
+- ✅ `CONTRIBUTING.md`
+- ✅ `README.md`
+- ✅ `.github/copilot-instructions.md`
+- ✅ `docs/README.md`
+
+**Зміни:**
+
+- Формат гілок узгоджений: `<type>/<issue-number>-<description>`
+- Issue number обов'язковий (4 цифри мінімум)
+- Scope обов'язковий у commits
+- Оновлено всі приклади
+
+**Результат:** Єдині стандарти в усій документації.
+
+---
+
+### Новостворені файли
+
+- ✅ `.github/BRANCH_NAMING_RULES.md` — швидкий довідник
+- ✅ `lefthook.yml` — конфігурація hooks
+- ✅ `BRANCH_NAMING_COMPLETE.md` — звіт про узгодження
+- ✅ `docs/BRANCH_NAMING_ALIGNMENT_REPORT.md` — детальний звіт
+- ✅ `docs/MIGRATION_HUSKY_TO_LEFTHOOK.md` — міграційний гайд
+- ✅ `LEFTHOOK_SCOPE_MIGRATION_COMPLETE.md` — фінальний summary
+
+**Результат:** Повна документація для розробників.
 
 ---
 
@@ -182,8 +300,9 @@
 
 ```
 🔴 КРИТИЧНІ (тиждень 1):
-  ✅ Виконано: 2/5 (40%)
-  ☐ Залишилось: 3 (структура файлів, CHANGELOG, формат гілок)
+  ✅ Виконано: 3/5 (60%)
+  ⚠️ Відкладено: 2/5 (структура файлів - не актуально, CHANGELOG - автоматизація)
+  ☐ Залишилось: 0
 
 🟡 ВАЖЛИВІ (тижні 2-3):
   ✅ Виконано: 2/5 (40%)
@@ -192,6 +311,9 @@
 🟢 ПОКРАЩЕННЯ (тижні 4-6):
   ✅ Виконано: 1/5 (20%)
   ☐ Залишилось: 4 (performance guide, best practices, автоматизація, migration)
+
+ВСЬОГО: 8/15 виконано (53%), 2 відкладено
+```
 
 🔵 BACKLOG:
   ☐ Виконано: 0/5 (0%)

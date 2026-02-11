@@ -85,12 +85,12 @@
 
 ```
 main (protected)
-  ├── feature/architect-agent-draft-creation
-  ├── feature/workflow-agent-branch-creation
-  ├── feature/kanban-board-ui
-  ├── fix/prisma-migration-error
-  ├── docs/adr-git-workflow
-  └── chore/update-dependencies
+  ├── feature/0001-architect-agent-draft-creation
+  ├── feature/0042-workflow-agent-branch-creation
+  ├── feature/0123-kanban-board-ui
+  ├── fix/0099-prisma-migration-error
+  ├── docs/0055-adr-git-workflow
+  └── chore/1234-update-dependencies
 ```
 
 **Типи гілок:**
@@ -131,14 +131,16 @@ main (protected)
 ### Формат
 
 ```
-<type>/<short-description>
-```
-
-або з номером задач��:
-
-```
 <type>/<issue-number>-<short-description>
 ```
+
+**⚠️ ОБОВ'ЯЗКОВІ ПРАВИЛА:**
+
+- Номер issue є **ОБОВ'ЯЗКОВИМ** для всіх гілок
+- Мінімум 4 цифри (з нулями спереду якщо номер < 1000)
+- Приклади: `0001`, `0042`, `0123`, `1234`, `5678`
+- Якщо немає issue — **СТВОРІТЬ** його перед початком роботи
+- Не може бути гілки без номеру issue
 
 ### Правила:
 
@@ -146,54 +148,61 @@ main (protected)
 - ✅ Kebab-case (слова через `-`)
 - ✅ Короткий опис (3-5 слів)
 - ✅ Англійська мова
+- ✅ **Обов'язковий номер issue (мінімум 4 цифри)**
 - ❌ Без спецсимволів (крім `-` та `/`)
 - ❌ Без spaces
+- ❌ Без гілок без issue
 
 ### Приклади:
 
 ```bash
 # Нова функціональність
-feature/architect-agent-draft-creation
-feature/123-kanban-drag-and-drop
-feature/github-integration-create-pr
+feature/0001-architect-agent-draft-creation
+feature/0123-kanban-drag-and-drop
+feature/1234-github-integration-create-pr
 
 # Виправлення бага
-fix/prisma-connection-timeout
-fix/456-kanban-card-not-updating
-fix/eslint-config-error
+fix/0042-prisma-connection-timeout
+fix/0456-kanban-card-not-updating
+fix/0099-eslint-config-error
 
 # Документація
-docs/adr-git-workflow
-docs/api-endpoints-readme
-docs/deployment-guide
+docs/0001-adr-git-workflow
+docs/0055-api-endpoints-readme
+docs/0100-deployment-guide
 
 # Maintenance
-chore/update-dependencies
-chore/configure-prettier
-chore/add-docker-compose
+chore/1234-update-dependencies
+chore/0010-configure-prettier
+chore/0020-add-docker-compose
 
 # Рефакторинг
-refactor/extract-github-service
-refactor/simplify-queue-logic
+refactor/0088-extract-github-service
+refactor/0077-simplify-queue-logic
 ```
 
 ### ❌ Погані назви:
 
 ```bash
-# Занадто загально
+# Немає номеру issue
 feature/new-feature
 fix/bug
+feature/architect-agent
+
+# Менше 4 цифр
+feature/1-new-feature
+fix/42-bug-fix
 
 # Не kebab-case
-feature/Architect_Agent
-feature/kanbanBoard
+feature/0123-Architect_Agent
+feature/0456-kanbanBoard
 
 # Спецсимволи
-feature/add-task-#123
-fix/bug@backend
+feature/0123-add-task-#123
+fix/0042-bug@backend
 
 # Українська мова (краще англійська для consistency)
-feature/додавання-задачі
+feature/0001-додавання-задачі
 ```
 
 ## Workflow Process
@@ -205,12 +214,15 @@ feature/додавання-задачі
 git checkout main
 git pull origin main
 
-# 2. Створити нову гілку
-git checkout -b feature/architect-agent-draft-creation
+# 2. Створити нову гілку (номер issue ОБОВ'ЯЗКОВИЙ!)
+git checkout -b feature/0001-architect-agent-draft-creation
 
-# Або з номером issue
-git checkout -b feature/123-kanban-drag-and-drop
+# Або
+git checkout -b feature/0123-kanban-drag-and-drop
+git checkout -b fix/0042-database-connection-issue
 ```
+
+**⚠️ ВАЖЛИВО:** Якщо немає issue для задачі, створіть його перед створенням гілки!
 
 ### 2. Робота над кодом
 
@@ -346,10 +358,10 @@ git checkout main
 git pull origin main
 
 # 4. Видаліть локальну feature гілку
-git branch -d feature/architect-agent-draft-creation
+git branch -d feature/0001-architect-agent-draft-creation
 
 # Якщо гілка не змерджена але ви впевнені: 
-git branch -D feature/architect-agent-draft-creation
+git branch -D feature/0001-architect-agent-draft-creation
 
 # 5. Очистити застарілі remote branches
 git fetch --prune
@@ -383,7 +395,9 @@ git fetch --prune
 | `build`    | Build system зміни              | `build(docker): optimize image size`          |
 | `revert`   | Revert попереднього коміту      | `revert: feat(architect): add draft creation` |
 
-### Scope (опціональний, але рекомендований)
+### Scope (ОБОВ'ЯЗКОВИЙ!)
+
+**⚠️ Scope є обов'язковим в усіх commit messages!**
 
 Scope вказує на модуль/частину проєкту:
 
@@ -398,6 +412,7 @@ Scope вказує на модуль/частину проєкту:
 - `database` — Database Service
 - `queue` — Queue/Events
 - `api` — API endpoints
+- `common` — Common utilities
 
 **Frontend scopes:**
 
@@ -405,6 +420,7 @@ Scope вказує на модуль/частину проєкту:
 - `draft-viewer` — Draft viewer
 - `conversation-form` — Conversation form
 - `ui` — UI components
+- `lib` — Library utilities
 
 **Shared scopes:**
 
@@ -413,11 +429,17 @@ Scope вказує на модуль/частину проєкту:
 - `deps` — Dependencies
 - `config` — Configuration
 
+**Правила scope:**
+
+- ✅ Завжди в **kebab-case**
+- ✅ Не може бути порожнім
+- ✅ Має бути один з перелічених вище
+
 ### Subject (обов'язковий)
 
 Правила:
 
-- ✅ Короткий (50 символів макс)
+- ✅ Короткий (**72 символи макс**)
 - ✅ Нижній регістр першої літери (sentence-case)
 - ✅ Без крапки наприкінці
 - ✅ Imperative mood ("add" не "added" або "adds")
@@ -432,8 +454,9 @@ docs(adr): add git workflow decision
 # ❌ Погано
 feat(architect): Added draft creation service  # "Added" замість "add"
 fix(kanban): Resolves drag and drop issue.      # Крапка наприкінці
-docs:  updated documentation                     # "updated" замість "update", немає scope
-FIX: bug                                        # Uppercase, не описово
+docs: updated documentation                     # Немає scope (ОБОВ'ЯЗКОВИЙ!)
+feat: add feature                               # Немає scope (ОБОВ'ЯЗКОВИЙ!)
+FIX: bug                                        # Uppercase, не описово, немає scope
 ```
 
 ### Body (опціональний)
@@ -642,8 +665,8 @@ cd ai-workflow-assistant
 # Install dependencies
 pnpm install
 
-# Створити гілку
-git checkout -b feature/my-feature
+# Створити гілку (з обов'язковим issue number!)
+git checkout -b feature/0123-my-feature
 ```
 
 ### Щоденна робота
@@ -675,7 +698,7 @@ git checkout main
 git pull origin main
 
 # Rebase feature гілку
-git checkout feature/my-feature
+git checkout feature/0123-my-feature
 git rebase origin/main
 
 # Якщо конфлікти:
@@ -692,10 +715,10 @@ git push --force-with-lease
 
 ```bash
 # Видалити локальну гілку
-git branch -d feature/my-feature
+git branch -d feature/0123-my-feature
 
 # Видалити remote гілку
-git push origin --delete feature/my-feature
+git push origin --delete feature/0123-my-feature
 
 # Очистити застарілі remote branches
 git fetch --prune

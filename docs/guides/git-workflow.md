@@ -27,10 +27,10 @@
 
 ```
 main (protected) ← завжди тут продакшн-ready код
-  ├── feature/architect-agent
-  ├── feature/kanban-board
-  ├── fix/database-connection
-  └── docs/api-documentation
+  ├── feature/0001-architect-agent
+  ├── feature/0042-kanban-board
+  ├── fix/0123-database-connection
+  └── docs/0099-api-documentation
 ```
 
 ## Створення гілок
@@ -45,15 +45,18 @@ git pull origin main
 ### 2. Створіть нову гілку
 
 ```bash
-git checkout -b <type>/<description>
+git checkout -b <type>/<issue-number>-<short-description>
 ```
+
+**⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри).
 
 **Приклади:**
 
 ```bash
-git checkout -b feature/architect-agent-implementation
-git checkout -b fix/kanban-drag-drop
-git checkout -b docs/api-endpoints
+git checkout -b feature/0001-architect-agent-implementation
+git checkout -b fix/0042-kanban-drag-drop
+git checkout -b docs/0099-api-endpoints
+git checkout -b feature/1234-workflow-integration
 ```
 
 ## Naming Conventions
@@ -64,34 +67,43 @@ git checkout -b docs/api-endpoints
 <type>/<issue-number>-<short-description>
 ```
 
+**⚠️ ОБОВ'ЯЗКОВІ ПРАВИЛА:**
+
+- Номер issue є **ОБОВ'ЯЗКОВИМ** для всіх гілок
+- Мінімум 4 цифри (додати нулі спереду якщо потрібно)
+- Якщо немає issue — створіть його перед початком роботи
+- Не може бути гілки без номеру issue
+
 ### Types
 
-| Type        | Використання          | Приклад                         |
-|-------------|-----------------------|---------------------------------|
-| `feature/`  | Нова функціональність | `feature/123-workflow-agent`    |
-| `fix/`      | Виправлення бага      | `fix/123-prisma-timeout`        |
-| `docs/`     | Документація          | `docs/123-readme-update`        |
-| `refactor/` | Рефакторинг           | `refactor/123-extract-service`  |
-| `test/`     | Додавання тестів      | `test/123-architect-unit-tests` |
-| `chore/`    | Maintenance           | `chore/123-update-deps`         |
-| `perf/`     | Performance           | `perf/123-optimize-queries`     |
+| Type        | Використання          | Приклад                          |
+|-------------|-----------------------|----------------------------------|
+| `feature/`  | Нова функціональність | `feature/0123-workflow-agent`    |
+| `fix/`      | Виправлення бага      | `fix/0042-prisma-timeout`        |
+| `docs/`     | Документація          | `docs/0099-readme-update`        |
+| `refactor/` | Рефакторинг           | `refactor/0001-extract-service`  |
+| `test/`     | Додавання тестів      | `test/0055-architect-unit-tests` |
+| `chore/`    | Maintenance           | `chore/1234-update-deps`         |
+| `perf/`     | Performance           | `perf/0088-optimize-queries`     |
 
 ### Правила назв
 
 ✅ **Добре:**
 
 - `feature/0123-architect-draft-creation`
-- `fix/0123-kanban-mobile-drag`
-- `fix/1123-kanban-mobile-drag`
-- `docs/9123-adr-git-workflow`
+- `fix/0042-kanban-mobile-drag`
+- `docs/0099-adr-git-workflow`
+- `feature/1234-workflow-integration`
+- `chore/5678-update-dependencies`
 
 ❌ **Погано:**
 
-- `feature/NewFeature` (не CamelCase)
-- `myBranch` (немає типу)
-- `fix-bug` (не описово)
+- `feature/NewFeature` (не CamelCase, немає issue)
+- `myBranch` (немає типу, немає issue)
+- `fix-bug` (не описово, немає типу, немає issue)
+- `feature/123-auth-bug` (менше 4 цифр)
 - `feature/fix-auth-bug` (немає issue-number)
-- `feature/додавання-функції` (не англійська)
+- `feature/додавання-функції` (не англійська, немає issue)
 
 ## Commit Messages
 
@@ -105,26 +117,35 @@ git checkout -b docs/api-endpoints
 [optional footer]
 ```
 
+**⚠️ ВАЖЛИВО:** Scope є **ОБОВ'ЯЗКОВИМ**!
+
 ### Type
 
 Той самий що й для гілок: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert`
 
-### Scope
+### Scope (ОБОВ'ЯЗКОВИЙ!)
 
 Модуль проєкту:
 
 **Backend:** `architect`, `workflow`, `code-review`, `documentation`, `github`, `ai-provider`, `database`, `queue`,
-`api`
+`api`, `common`
 
-**Frontend:** `kanban`, `draft-viewer`, `conversation-form`, `ui`
+**Frontend:** `kanban`, `draft-viewer`, `conversation-form`, `ui`, `lib`
 
 **Shared:** `shared`, `types`, `deps`, `config`
 
-### Subject
+**Правила scope:**
 
-- Максимум 50 символів
-- Lowercase першої літери
-- Imperative mood ("add" не "added")
+- ✅ Завжди в **kebab-case**
+- ✅ Один з перелічених вище
+- ❌ Не може бути порожнім
+
+### Subject (ОБОВ'ЯЗКОВИЙ!)
+
+- **Максимум 72 символів** (було 50)
+- **Lowercase першої літери** (sentence-case)
+- **Imperative mood** ("add" не "added")
+- **Без крапки наприкінці**
 - Без крапки наприкінці
 
 ### Приклади
@@ -263,7 +284,7 @@ git checkout main
 git pull origin main
 
 # 3. Видалити локальну feature гілку
-git branch -d feature/my-feature
+git branch -d feature/0001-my-feature
 
 # 4. Очистити застарілі remote branches
 git fetch --prune
@@ -274,25 +295,25 @@ git fetch --prune
 ### Приклад 1: Проста функціональність
 
 ```bash
-# День 1: Початок
+# День 1: Початок (issue #0025 вже створено)
 git checkout main
 git pull origin main
-git checkout -b feature/add-logging
+git checkout -b feature/0025-add-logging
 
 # Робота... 
-git add apps/backend/src/common/logger. service.ts
+git add apps/backend/src/common/logger.service.ts
 git commit -m "feat(backend): add Pino logger service"
 
 git add apps/backend/src/common/logger.module.ts
 git commit -m "feat(backend): add logger module"
 
-git push -u origin feature/add-logging
+git push -u origin feature/0025-add-logging
 
 # День 2: Завершення
 git add apps/backend/src/common/__tests__/logger.spec.ts
 git commit -m "test(backend): add logger service tests"
 
-git add docs/guides/logging. md
+git add docs/guides/logging.md
 git commit -m "docs(backend): add logging guide"
 
 git push
@@ -301,14 +322,14 @@ git push
 # Після схвалення та мерджу: 
 git checkout main
 git pull origin main
-git branch -d feature/add-logging
+git branch -d feature/0025-add-logging
 ```
 
 ### Приклад 2: Із синхронізацією в main
 
 ```bash
-# Ви працюєте у гілці... 
-git checkout feature/kanban-board
+# Ви працюєте у гілці (issue #0123)... 
+git checkout feature/0123-kanban-board
 
 # Main оновився (хтось змерджив іншу PR)
 # Синхронізуйтесь: 
@@ -328,7 +349,7 @@ git push --force-with-lease
 ### Приклад 3: Виправлення після code review
 
 ```bash
-# PR створено, отримали коментарі від рев'ювера
+# PR створено (issue #0042), отримали коментарі від рев'ювера
 
 # Внесіть зміни
 git add . 
@@ -348,9 +369,9 @@ git push
 # Якщо ще не запушили:
 git reset --soft HEAD~1  # Скасувати коміт, зберегти зміни
 
-# Створіть правильну гілку
-git checkout -b feature/my-feature
-git push -u origin feature/my-feature
+# Створіть правильну гілку (з issue number!)
+git checkout -b feature/0123-my-feature
+git push -u origin feature/0123-my-feature
 ```
 
 ### "I need to change the last commit message"
@@ -444,13 +465,13 @@ git branch -a
 
 # Гілки
 git checkout main
-git checkout -b feature/new-feature
-git branch -d feature/old-feature
+git checkout -b feature/0123-new-feature
+git branch -d feature/0042-old-feature
 
 # Синхронізація
 git fetch origin
 git pull origin main
-git push origin feature/my-feature
+git push origin feature/0123-my-feature
 
 # Коміти
 git add .
@@ -468,7 +489,7 @@ git reset --hard HEAD~1   # Скасувати коміт і зміни
 
 # Cleanup
 git fetch --prune
-git branch -d feature/done-feature
+git branch -d feature/0042-done-feature
 ```
 
 ## Додаткові ресурси

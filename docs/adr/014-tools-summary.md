@@ -2,7 +2,7 @@
 
 ## Статус
 
-Прийнято
+Прийнято (Оновлено: 2026-02-11 — Husky → Lefthook)
 
 ## Інструменти
 
@@ -11,9 +11,12 @@
 | **Prettier**    | Форматування коду         | • Format on save (IDE)<br>• Pre-commit (lint-staged)<br>• CI/CD                        |
 | **ESLint**      | Лінтинг, best practices   | • IDE (real-time)<br>• Pre-commit (lint-staged)<br>• CI/CD                             |
 | **TypeScript**  | Type checking             | • IDE (real-time)<br>• Pre-commit (changed files)<br>• Pre-push (all files)<br>• CI/CD |
-| **Husky**       | Git hooks management      | • Pre-commit<br>• Commit-msg<br>• Pre-push                                             |
+| **Lefthook**    | Git hooks management      | • Pre-commit<br>• Commit-msg<br>• Pre-push                                             |
 | **lint-staged** | Run tools on staged files | • Pre-commit                                                                           |
 | **commitlint**  | Validate commit messages  | • Commit-msg hook                                                                      |
+
+> **Примітка:** Раніше використовувався Husky ([ADR-013](013-git-hooks-husky-lint-staged.md)), замінений на
+> Lefthook ([ADR-023](023-git-hooks-lefthook.md)) для кращої продуктивності.
 
 ## Workflow
 
@@ -26,18 +29,19 @@ IDE: Prettier formats on save
 Developer:  git add . 
 Developer: git commit -m "feat(backend): add feature"
         ↓
-Pre-commit hook (Husky):
+Pre-commit hook (Lefthook):
   → lint-staged: 
     → ESLint --fix (staged files)
     → Prettier --write (staged files)
   → Type check (changed projects)
         ↓
-Commit-msg hook (Husky):
+Commit-msg hook (Lefthook):
   → commitlint validates message format
+  → Branch name validation (commitlint plugin)
         ↓
 Developer: git push
         ↓
-Pre-push hook (Husky):
+Pre-push hook (Lefthook):
   → Run tests (changed files)
   → Type check (all files)
         ↓
@@ -62,7 +66,7 @@ pnpm add -D -w \
   eslint-plugin-security eslint-plugin-unused-imports \
   eslint-plugin-simple-import-sort \
   eslint-import-resolver-typescript \
-  husky lint-staged \
+  lefthook lint-staged \
   @commitlint/cli @commitlint/config-conventional \
   sort-package-json
 
@@ -75,7 +79,7 @@ pnpm add -D \
   eslint-plugin-jsx-a11y
 
 # Initialize
-npx husky init
+npx lefthook install
 ```
 
 ## Configuration files
@@ -85,16 +89,13 @@ root/
 ├── .prettierrc              # Prettier config
 ├── .prettierignore
 ├── .eslintrc.js             # Base ESLint config
-├── . eslintignore
-├── commitlint.config.js     # Commit message rules
-├── . lintstagedrc.js         # lint-staged config
-├── . husky/
-│   ├── pre-commit
-│   ├── commit-msg
-│   └── pre-push
+├── .eslintignore
+├── commitlint.config.js     # Commit message rules + branch validation
+├── .lintstagedrc.js         # lint-staged config
+├── lefthook.yml             # Lefthook hooks configuration
 ├── apps/
 │   ├── backend/
-│   │   └── . eslintrc.js     # Backend ESLint (extends root)
+│   │   └── .eslintrc.js     # Backend ESLint (extends root)
 │   └── dashboard/
 │       └── .eslintrc.js     # Frontend ESLint (extends root)
 └── . vscode/
@@ -198,18 +199,30 @@ jobs:
 
 ## Troubleshooting
 
-### Husky hooks не запускаються
+### Lefthook hooks не запускаються
 
 ```bash
 # Re-initialize
-rm -rf .husky
-npx husky init
+npx lefthook install
+
+# Або з reset hooks path
+npx lefthook install --reset-hooks-path
+```
+
+### Як пропустити hooks (не рекомендовано)
+
+```bash
+# Пропустити всі hooks
+LEFTHOOK=0 git commit -m "message"
+
+# Пропустити конкретний hook
+LEFTHOOK_EXCLUDE=pre-commit git commit -m "message"
 ```
 
 ### lint-staged повільний
 
 ```javascript
-// . lintstagedrc.js - run sequentially
+// .lintstagedrc.js - run sequentially
 module.exports = {
     '**/*.{ts,tsx}': [
         'eslint --fix',
@@ -237,3 +250,4 @@ module.exports = {
 - Всі інструменти працюють разом
 - IDE → git hooks → CI/CD (багаторівнева перевірка)
 - Автоматизація зберігає час та нерви
+- Lefthook швидший за Husky завдяки Go runtime (див. [ADR-023](023-git-hooks-lefthook.md))

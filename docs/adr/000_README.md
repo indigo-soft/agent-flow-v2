@@ -63,7 +63,7 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 | [010](010-error-handling-strategy.md)         | Error Handling Strategy             | Accepted   | 2024-01-20 |
 | [011](011-code-formatting-prettier.md)        | Code Formatting (Prettier)          | Accepted   | 2024-01-20 |
 | [012](012-code-linting-eslint.md)             | Code Linting (ESLint)               | Accepted   | 2024-01-20 |
-| [013](013-git-hooks-husky-lint-staged.md)     | Git Hooks (Husky + lint-staged)     | Accepted   | 2024-01-20 |
+| [013](013-git-hooks-husky-lint-staged.md)     | Git Hooks (Husky + lint-staged)     | Superseded | 2024-01-20 |
 | [014](014-tools-summary.md)                   | Tools Summary                       | Accepted   | 2024-01-20 |
 | [015](015-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy | Accepted   | 2024-01-20 |
 | [018](018-file-structure-flat-modular.md)     | Flat Modular File Structure         | Accepted   | 2024-01-20 |
@@ -71,6 +71,7 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 | [020](020-state-management-strategy.md)       | State Management Strategy           | Accepted   | 2026-01-27 |
 | [021](021-observability-strategy.md)          | Observability Strategy              | Accepted   | 2026-01-27 |
 | [022](022-api-design-strategy.md)             | API Design Strategy                 | Accepted   | 2026-01-27 |
+| [023](023-git-hooks-lefthook.md)              | Git Hooks (Lefthook)                | Accepted   | 2026-02-11 |
 
 ### Tooling & Infrastructure
 
@@ -188,6 +189,29 @@ Proposed → Accepted → Deprecated → Superseded
 - Не описувати альтернативи ("ми просто обрали X")
 - Писати романи на 10 сторінок
 - Створювати ADR для дрібниць
+
+## Статуси ADR
+
+ADR можуть мати наступні статуси:
+
+- **Proposed** — рішення запропоноване, але ще не прийняте
+- **Accepted** — рішення прийняте та впроваджене
+- **Deprecated** — рішення застаріле, але ще використовується
+- **Superseded** — рішення замінене іншим ADR (вказується який)
+- **Rejected** — рішення відхилене
+
+### Superseded ADRs
+
+Якщо ADR замінюється новим рішенням:
+
+1. Створіть новий ADR з новим рішенням
+2. Оновіть старий ADR, додавши "Superseded by ADR-XXX" у статус
+3. Залиште старий ADR у списку зі статусом "Superseded"
+
+**Приклад:**
+
+- [ADR-013](013-git-hooks-husky-lint-staged.md) — Superseded → [ADR-023](023-git-hooks-lefthook.md)
+- [ADR-009](009-monorepo-structure.md) — Superseded (змінена структура проєкту)
 
 ## Template
 
