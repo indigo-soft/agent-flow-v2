@@ -300,7 +300,7 @@ Progress: [░░░░░░░░░░] 0% (0/1 виконано)
 
 ### 6. 🟡 Налаштувати TypeScript Path Aliases
 
-**Проблема:** Проєкт має flat modular структуру (`src/agents/`, `src/api/`, `src/database/` тощо), але не повністю налаштовані TypeScript path aliases для зручних імпортів. Наразі `tsconfig.json` містить часткові налаштування, але відсутня підтримка runtime та конфігурація для Jest.
+**Проблема:** Проєкт має flat modular структуру (`src/agents/`, `src/api/`, `src/database/` тощо), але не повністю налаштовано TypeScript path aliases для зручних імпортів. Наразі `tsconfig.json` містить часткові налаштування, але відсутня підтримка runtime та конфігурація для Jest.
 
 **Чому це важливо:**
 
