@@ -99,9 +99,39 @@ export function Component({prop}: ComponentProps) {
 
 ## File Paths
 
-- **Backend**: `apps/backend/src/modules/<module-name>/`
-- **Frontend**: `apps/dashboard/components/` (UI in `ui/`)
-- **Shared**: `packages/shared/src/`
+**Architecture:** Flat Modular Architecture with Shared Layer (see `docs/guides/architecture.md`)
+
+```
+src/
+├── modules/         # Domain modules (business logic)
+│   ├── architect-agent/
+│   ├── workflow-agent/
+│   ├── code-review-agent/
+│   └── documentation-agent/
+│
+└── components/      # Shared components (technical infrastructure)
+    ├── api/                # API Gateway
+    ├── database/           # Database service
+    ├── queue/              # Event Queue
+    ├── logger/             # Logging
+    ├── config/             # Configuration
+    ├── ai-provider/        # AI Provider integration
+    ├── github/             # GitHub integration
+    └── dashboard/          # Frontend (Next.js)
+```
+
+**Key Rules:**
+
+- 🔒 Domain modules (`modules/`) are independent of each other
+- 📬 Interaction only through Event Queue (rarely via HTTP)
+- ⚙️ Domain modules use only shared components
+- 🔧 Shared components can depend on each other
+- ❌ Shared components CANNOT depend on domain modules (except API Gateway)
+
+**TypeScript Paths:**
+
+- `@modules/*` — domain modules
+- `@components/*` — shared components
 
 ## Testing
 
@@ -132,7 +162,8 @@ describe('ServiceName', () => {
 
 ## Reference Documentation
 
-- **Architecture**: `docs/architecture/overview.md`
+- **Architecture**: `docs/guides/architecture.md`
+- **Modules**: `docs/architecture/modules.md`
 - **Git Workflow**: `docs/guides/git-workflow.md`
 - **Naming Conventions**: `docs/guides/naming-conventions.md`
 - **ADRs**: `docs/adr/000_README.md`
