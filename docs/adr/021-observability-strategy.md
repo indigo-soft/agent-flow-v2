@@ -519,7 +519,7 @@ node scripts/observability/parse-metrics.js
 **Endpoint (опціонально):**
 
 ```typescript
-// src/api/metrics/metrics.controller.ts
+// components/api/metrics/metrics.controller.ts
 import { Controller, Get } from '@nestjs/common';
 import { exec } from 'child_process';
 import { promisify } from 'util';

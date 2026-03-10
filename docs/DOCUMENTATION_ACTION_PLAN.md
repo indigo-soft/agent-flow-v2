@@ -372,7 +372,8 @@ _Docusaurus або Nextra для красивого documentation сайту_
 ## RESOURCES
 
 - **Повний звіт аудиту:** [DOCUMENTATION_AUDIT_REPORT.md](./DOCUMENTATION_AUDIT_REPORT.md)
-- **ADR Template:** [docs/adr/TEMPLATE.md](./adr/TEMPLATE.md)
+- **ADR Template:** [docs/adr/templates/TEMPLATE.md](./adr/templates/TEMPLATE.md)
+- **ADR Short Template:** [docs/adr/templates/TEMPLATE-SHORT.md](./adr/templates/TEMPLATE-SHORT.md)
 - **Keep a Changelog:** https://keepachangelog.com/
 - **Conventional Commits:** https://www.conventionalcommits.org/
 - **C4 Model:** https://c4model.com/

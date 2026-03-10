@@ -47,7 +47,8 @@
 Architecture Decision Records документують важливі архітектурні рішення:
 
 - [ADR Index](adr/000_README.md) — всі ADR
-- [ADR Template](adr/TEMPLATE.md) — template для нових ADR
+- [ADR Template](adr/templates/TEMPLATE.md) — template для нових ADR
+- [ADR Short Template](adr/templates/TEMPLATE-SHORT.md) — короткий template
 
 ## ❓ FAQ
 

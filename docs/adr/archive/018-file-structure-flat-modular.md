@@ -2,7 +2,7 @@
 
 ## Статус
 
-Accepted
+Superseded by [ADR-024](../024-flat-modular-architecture-with-shared-layer.md)
 
 ## Контекст
 

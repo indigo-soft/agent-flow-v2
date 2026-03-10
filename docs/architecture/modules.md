@@ -3,7 +3,9 @@
 Цей документ описує основні модулі системи **agent-flow-v2**, їх відповідальність, вхідні та вихідні дані, потоки та
 функціональність.
 
-## 1. Dashboard Module (Frontend)
+## 1. Dashboard Module (Frontend) — Shared Component
+
+**Тип:** Shared компонент (`components/dashboard/`)
 
 **Відповідальність**: Інтерфейс користувача для взаємодії з системою
 
@@ -45,7 +47,9 @@
 - Канбан-дошка зі стовпчиками: "Нові завдання", "Наступні завдання", "У роботі", "На доопрацюванні", "Виконано"
 - Кнопки біля кожного завдання: "Запланувати", "Взяти у роботу", "Зробити ревʼю", "Повторне ревʼю"
 
-## 2. API Gateway Module
+## 2. API Gateway Module — Shared Component
+
+**Тип:** Shared компонент (`components/api/`)
 
 **Відповідальність**: Маршрутизація запитів та валідація даних
 
@@ -86,7 +90,9 @@
 - Обробка помилок та формування відповідей
 - Публікація подій при зміні статусів завдань
 
-## 3. Database Service Module
+## 3. Database Service Module — Shared Component
+
+**Тип:** Shared компонент (`components/database/`)
 
 **Відповідальність**: Збереження та отримання даних з БД
 
@@ -127,7 +133,9 @@
 - Зміна статусів завдань
 - Запити з фільтрацією та сортуванням
 
-## 4. Event Queue Module
+## 4. Event Queue Module — Shared Component
+
+**Тип:** Shared компонент (`components/queue/`)
 
 **Відповідальність**: Публікація подій та доставка їх підписникам
 
@@ -167,7 +175,9 @@
 - Retry механізм при помилках доставки
 - Логування подій
 
-## 5. GitHub Integration Module
+## 5. GitHub Integration Module — Shared Component
+
+**Тип:** Shared компонент (`components/github/`)
 
 **Відповідальність**: Взаємодія з GitHub API
 
@@ -218,7 +228,9 @@
 - Обробка помилок API
 - Форматування запитів згідно визначеного формату
 
-## 6. AI Provider Integration Module
+## 6. AI Provider Integration Module — Shared Component
+
+**Тип:** Shared компонент (`components/ai-provider/`)
 
 **Відповідальність**: Взаємодія з ШІ-провайдером
 
@@ -255,7 +267,9 @@
 - Retry механізм
 - Валідація формату відповідей
 
-## 7. Architect Agent Module
+## 7. Architect Agent Module — Domain Module
+
+**Тип:** Доменний модуль (`modules/architect-agent/`)
 
 **Відповідальність**: Перетворення неструктурованої інформації у структуровані плани та завдання
 
@@ -296,7 +310,9 @@
 - Генерація критеріїв готовності для кожного завдання
 - Прив'язка артефактів до завдань
 
-## 8. Workflow Agent Module
+## 8. Workflow Agent Module — Domain Module
+
+**Тип:** Доменний модуль (`modules/workflow-agent/`)
 
 **Відповідальність**: Управління lifecycle завдання від створення гілку до документації
 
@@ -334,7 +350,9 @@
 - Оновлення статусів завдань
 - Запуск процесу оновлення документації
 
-## 9. Code Review Agent Module
+## 9. Code Review Agent Module — Domain Module
+
+**Тип:** Доменний модуль (`modules/code-review-agent/`)
 
 **Відповідальність**: Організація процесу ревʼю коду через ШІ
 
@@ -384,7 +402,9 @@
 - Управління циклом повторного ревʼю
 - Оновлення статусів завдань
 
-## 10. Documentation Agent Module
+## 10. Documentation Agent Module — Domain Module
+
+**Тип:** Доменний модуль (`modules/documentation-agent/`)
 
 **Відповідальність**: Оновлення документації після виконання завдань
 

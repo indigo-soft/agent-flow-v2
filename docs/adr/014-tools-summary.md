@@ -15,7 +15,7 @@
 | **lint-staged** | Run tools on staged files | • Pre-commit                                                                           |
 | **commitlint**  | Validate commit messages  | • Commit-msg hook                                                                      |
 
-> **Примітка:** Раніше використовувався Husky ([ADR-013](013-git-hooks-husky-lint-staged.md)), замінений на
+> **Примітка:** Раніше використовувався Husky ([ADR-013](archive/013-git-hooks-husky-lint-staged.md)), замінений на
 > Lefthook ([ADR-023](023-git-hooks-lefthook.md)) для кращої продуктивності.
 
 ## Workflow

@@ -2,7 +2,7 @@
 
 ## Статус
 
-**Superseded** by [ADR-023: Міграція з Husky на Lefthook](023-git-hooks-lefthook.md)
+**Superseded** by [ADR-023: Міграція з Husky на Lefthook](../023-git-hooks-lefthook.md)
 
 _(Оригінально: Прийнято 2024-01-20, Superseded: 2026-02-11)_
 

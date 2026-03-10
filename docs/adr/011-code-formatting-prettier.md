@@ -46,7 +46,7 @@ JSX/TSX, JSON, Markdown, Prisma schema).
 
 3. **Інтеграція з екосистемою**
     - Всі популярні IDE (VS Code, WebStorm)
-    - Git hooks (через Husky + lint-staged)
+   - Git hooks (через Lefthook, див. ADR-023)
     - CI/CD (перевірка форматування)
     - ESLint (через `eslint-config-prettier`)
 
@@ -57,7 +57,7 @@ JSX/TSX, JSON, Markdown, Prisma schema).
 
 5. **Performance**
     - Швидкий для monorepo
-    - Incremental formatting (через lint-staged)
+   - Incremental formatting (через Lefthook, тільки staged файли)
 
 ### Чому не інші варіанти:
 
@@ -194,9 +194,9 @@ yarn.lock
 }
 ```
 
-## Git Hooks (Husky + lint-staged)
+## Git Hooks (Lefthook)
 
-Автоматичне форматування перед commit (див. ADR-012).
+Автоматичне форматування перед commit (див. [ADR-023](023-git-hooks-lefthook.md)).
 
 ## CI/CD Перевірка
 

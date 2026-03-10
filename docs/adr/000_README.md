@@ -56,22 +56,23 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 
 ### Cross-cutting
 
-| #                                             | Назва                               | Статус     | Дата       |
-|-----------------------------------------------|-------------------------------------|------------|------------|
-| [008](008-data-validation-strategy.md)        | Data Validation Strategy            | Accepted   | 2024-01-20 |
-| [009](009-monorepo-structure.md)              | Monorepo Structure                  | Superseded | 2024-01-20 |
-| [010](010-error-handling-strategy.md)         | Error Handling Strategy             | Accepted   | 2024-01-20 |
-| [011](011-code-formatting-prettier.md)        | Code Formatting (Prettier)          | Accepted   | 2024-01-20 |
-| [012](012-code-linting-eslint.md)             | Code Linting (ESLint)               | Accepted   | 2024-01-20 |
-| [013](013-git-hooks-husky-lint-staged.md)     | Git Hooks (Husky + lint-staged)     | Superseded | 2024-01-20 |
-| [014](014-tools-summary.md)                   | Tools Summary                       | Accepted   | 2024-01-20 |
-| [015](015-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy | Accepted   | 2024-01-20 |
-| [018](018-file-structure-flat-modular.md)     | Flat Modular File Structure         | Accepted   | 2024-01-20 |
-| [019](019-security-strategy.md)               | Security Strategy                   | Accepted   | 2026-01-27 |
-| [020](020-state-management-strategy.md)       | State Management Strategy           | Accepted   | 2026-01-27 |
-| [021](021-observability-strategy.md)          | Observability Strategy              | Accepted   | 2026-01-27 |
-| [022](022-api-design-strategy.md)             | API Design Strategy                 | Accepted   | 2026-01-27 |
-| [023](023-git-hooks-lefthook.md)              | Git Hooks (Lefthook)                | Accepted   | 2026-02-11 |
+| #                                                         | Назва                                       | Статус     | Дата       |
+|-----------------------------------------------------------|---------------------------------------------|------------|------------|
+| [008](008-data-validation-strategy.md)                    | Data Validation Strategy                    | Accepted   | 2024-01-20 |
+| [009](archive/009-monorepo-structure.md)                  | Monorepo Structure                          | Superseded | 2024-01-20 |
+| [010](010-error-handling-strategy.md)                     | Error Handling Strategy                     | Accepted   | 2024-01-20 |
+| [011](011-code-formatting-prettier.md)                    | Code Formatting (Prettier)                  | Accepted   | 2024-01-20 |
+| [012](012-code-linting-eslint.md)                         | Code Linting (ESLint)                       | Accepted   | 2024-01-20 |
+| [013](archive/013-git-hooks-husky-lint-staged.md)         | Git Hooks (Husky + lint-staged)             | Superseded | 2024-01-20 |
+| [014](014-tools-summary.md)                               | Tools Summary                               | Accepted   | 2024-01-20 |
+| [015](015-git-workflow-branching-strategy.md)             | Git Workflow and Branching Strategy         | Accepted   | 2024-01-20 |
+| [018](archive/018-file-structure-flat-modular.md)         | Flat Modular File Structure                 | Superseded | 2024-01-20 |
+| [019](019-security-strategy.md)                           | Security Strategy                           | Accepted   | 2026-01-27 |
+| [020](020-state-management-strategy.md)                   | State Management Strategy                   | Accepted   | 2026-01-27 |
+| [021](021-observability-strategy.md)                      | Observability Strategy                      | Accepted   | 2026-01-27 |
+| [022](022-api-design-strategy.md)                         | API Design Strategy                         | Accepted   | 2026-01-27 |
+| [023](023-git-hooks-lefthook.md)                          | Git Hooks (Lefthook)                        | Accepted   | 2026-02-11 |
+| [024](024-flat-modular-architecture-with-shared-layer.md) | Flat Modular Architecture with Shared Layer | Accepted   | 2026-02-19 |
 
 ### Tooling & Infrastructure
 
@@ -85,12 +86,17 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 ### 1. Скопіюйте template
 
 ```bash
-# Визначте наступний номер (наприклад, 016)
-NEXT_NUM=016
+# Визначте наступний номер (наприклад, 025)
+NEXT_NUM=025
 
 # Створіть файл з описовою назвою
-cp docs/adr/TEMPLATE.md docs/adr/${NEXT_NUM}-your-decision-title.md
+cp docs/adr/templates/TEMPLATE.md docs/adr/${NEXT_NUM}-your-decision-title.md
 ```
+
+Доступні шаблони:
+
+- `templates/TEMPLATE.md` — повний шаблон з усіма секціями
+- `templates/TEMPLATE-SHORT.md` — короткий шаблон для простих рішень
 
 ### 2. Заповніть секції
 
@@ -171,6 +177,51 @@ Proposed → Accepted → Deprecated → Superseded
 - Коли вирішили не використовувати це рішення
 - Обов'язково пояснити чому у ADR
 
+## Архівування Superseded ADR
+
+**Важливо:** Коли ADR отримує статус **Superseded**, він повинен бути переміщений до теки `archive/`:
+
+### Процес архівування:
+
+1. **Оновити статус у ADR:**
+   ```markdown
+   ## Статус
+   
+   Superseded by [ADR-024](../024-new-decision.md)
+   ```
+
+2. **Перемістити файл:**
+   ```bash
+   mv docs/adr/018-old-decision.md docs/adr/archive/
+   ```
+
+3. **Оновити всі посилання:**
+   - У `000_README.md` змінити посилання: `[018](archive/018-old-decision.md)`
+   - У новому ADR, що замінює: `Supersedes: [ADR-018](archive/018-old-decision.md)`
+   - У всій документації проєкту оновити посилання на архівний ADR
+
+4. **Оновити таблицю в README:**
+   - Змінити статус на `Superseded`
+   - Змінити посилання на `archive/XXX-...`
+
+### Навіщо це потрібно?
+
+- ✅ Чистота головної теки ADR (тільки актуальні рішення)
+- ✅ Історія рішень зберігається (архів доступний)
+- ✅ Одразу видно які рішення діють зараз
+- ✅ Легше орієнтуватись новим членам команди
+
+**Примітка:** Файли в архіві НЕ видаляються, тільки переміщуються. Історія важлива!
+
+## Шаблони ADR
+
+Шаблони для створення нових ADR знаходяться у теці `templates/`:
+
+- **`templates/TEMPLATE.md`** — повний шаблон з усіма секціями та детальними коментарями
+- **`templates/TEMPLATE-SHORT.md`** — короткий шаблон для простих рішень
+
+Вибирайте шаблон залежно від складності рішення.
+
 ## Best Practices
 
 ### ✅ Добре
@@ -210,12 +261,12 @@ ADR можуть мати наступні статуси:
 
 **Приклад:**
 
-- [ADR-013](013-git-hooks-husky-lint-staged.md) — Superseded → [ADR-023](023-git-hooks-lefthook.md)
-- [ADR-009](009-monorepo-structure.md) — Superseded (змінена структура проєкту)
+- [ADR-013](archive/013-git-hooks-husky-lint-staged.md) — Superseded → [ADR-023](023-git-hooks-lefthook.md)
+- [ADR-009](archive/009-monorepo-structure.md) — Superseded (змінена структура проєкту)
 
 ## Template
 
-Використовуйте [TEMPLATE.md](TEMPLATE.md) для створення нових ADR.
+Використовуйте [TEMPLATE.md](templates/TEMPLATE.md) для створення нових ADR.
 
 ## Приклади
 
@@ -226,7 +277,7 @@ ADR можуть мати наступні статуси:
 
 ## Питання?
 
-- Прочитайте [ADR Template](TEMPLATE.md) з поясненнями
+- Прочитайте [ADR Template](templates/TEMPLATE.md) з поясненнями
 - Подивіться ADR, що вже існують, як приклади:
 - Створіть [GitHub Discussion](https://github.com/your-org/your-repo/discussions)
 

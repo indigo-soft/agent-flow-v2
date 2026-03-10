@@ -558,7 +558,7 @@ pnpm lint-staged
 **Рішення:** Валідація всіх вхідних даних
 
 ```typescript
-// src/api/tasks/dtos.ts
+// components/api/tasks/dtos.ts
 import {IsString, IsNotEmpty, IsEnum, IsOptional, MaxLength, MinLength} from 'class-validator';
 import {Transform} from 'class-transformer';
 import * as sanitizeHtml from 'sanitize-html';

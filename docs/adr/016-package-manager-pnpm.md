@@ -491,8 +491,8 @@ pnpm install
 
 ## Зв'язки
 
-- Related to: [ADR-009:  Monorepo Structure](009-monorepo-structure.md)
-- Related to: [ADR-013: Git Hooks](013-git-hooks-husky-lint-staged.md) — використовує pnpm у скриптах
+- Related to: [ADR-009:  Monorepo Structure](archive/009-monorepo-structure.md)
+- Related to: [ADR-013: Git Hooks](archive/013-git-hooks-husky-lint-staged.md) — використовує pnpm у скриптах
 
 ## Примітки
 

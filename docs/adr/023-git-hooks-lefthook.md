@@ -6,7 +6,8 @@
 
 ## Контекст
 
-У проєкті використовувався Husky для управління Git hooks (див. [ADR-013](013-git-hooks-husky-lint-staged.md)). З часом
+У проєкті використовувався Husky для управління Git hooks (див. [ADR-013](archive/013-git-hooks-husky-lint-staged.md)).
+З часом
 виникли потреби в:
 
 - **Швидшій продуктивності** — Husky написаний на Node.js, що додає overhead
@@ -297,7 +298,7 @@ summary: (done in 0.68 seconds)
 
 ## Зв'язок з іншими ADR
 
-- [ADR-013: Git Hooks (Husky + lint-staged)](013-git-hooks-husky-lint-staged.md) — **Superseded** цим ADR
+- [ADR-013: Git Hooks (Husky + lint-staged)](archive/013-git-hooks-husky-lint-staged.md) — **Superseded** цим ADR
 - [ADR-015: Git Workflow and Branching Strategy](015-git-workflow-branching-strategy.md) — використовує hooks для
   валідації
 

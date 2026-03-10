@@ -2,11 +2,12 @@
 
 ## Статус
 
-Superseded by [ADR-018](018-file-structure-flat-modular.md)
+Superseded by [ADR-024](../024-flat-modular-architecture-with-shared-layer.md) (
+was [ADR-018](./018-file-structure-flat-modular.md))
 
 ## Контекст
 
-**УВАГА: Це рішення було змінене на користь Flat Modular Structure (ADR-018).**
+**УВАГА: Це рішення було змінене на користь Flat Modular Architecture with Shared Layer (ADR-024).**
 
 Проєкт складався з:
 

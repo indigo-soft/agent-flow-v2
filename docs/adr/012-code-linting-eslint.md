@@ -397,7 +397,7 @@ pnpm add -D -w eslint-plugin-simple-import-sort
 
 ## Git Hooks Integration
 
-Див. ADR-013 (Husky + lint-staged).
+Див. [ADR-023](023-git-hooks-lefthook.md) (Lefthook).
 
 ## CI/CD Перевірка
 

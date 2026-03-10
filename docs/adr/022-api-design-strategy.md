@@ -635,7 +635,7 @@ export class CreateTaskDto {
 ### 2. Controller
 
 ```typescript
-// src/api/tasks/tasks.controller.ts
+// components/api/tasks/tasks.controller.ts
 import { Controller, Post, Get, Body, Param, HttpCode } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TasksService } from './tasks.service';
