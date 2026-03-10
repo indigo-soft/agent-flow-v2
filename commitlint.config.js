@@ -25,7 +25,7 @@ module.exports = {
         ],
 
         // Subject validation
-        'subject-case': [2, 'always', 'lower-case'], // lowercase
+        'subject-case': [1, 'always', 'lower-case'], // lowercase
         'subject-empty': [2, 'never'], // Subject is required
         'subject-full-stop': [2, 'never', '.'], // No period at the end
         'subject-max-length': [2, 'always', 72], // Max 72 characters
