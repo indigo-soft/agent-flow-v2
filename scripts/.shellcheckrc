@@ -1,0 +1,9 @@
+# shellcheck configuration for /scripts
+# https://www.shellcheck.net/wiki/Directive
+
+# Follow sourced files; search path includes libs/ and release/
+source-path=SCRIPTDIR/../libs
+source-path=SCRIPTDIR
+
+# Treat SC1091 (not following sourced file) as info only — paths are dynamic
+disable=SC1091
