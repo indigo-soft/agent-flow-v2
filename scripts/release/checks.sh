@@ -25,12 +25,27 @@ check_dependencies() {
 # -----------------------------
 get_default_branch() {
   local branch
+
+  # 1. Try origin/HEAD (set after: git remote set-head origin --auto)
   branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
-  if [ -z "$branch" ]; then
-    log_error "Could not determine the default branch. Run: git remote set-head origin --auto" >&2
-    exit 1
-  fi
-  echo "$branch"
+  [ -n "$branch" ] && echo "$branch" && return 0
+
+  # 2. Try git config init.defaultBranch
+  branch=$(git config init.defaultBranch 2>/dev/null)
+  [ -n "$branch" ] && echo "$branch" && return 0
+
+  # 3. Try known default branch names that exist locally
+  local candidate
+  for candidate in main master trunk development; do
+    if git show-ref --verify --quiet "refs/heads/$candidate"; then
+      echo "$candidate" && return 0
+    fi
+  done
+
+  # 4. Nothing found
+  log_error "Could not determine the default branch automatically." >&2
+  log_error "Fix it by running: git remote set-head origin --auto" >&2
+  exit 1
 }
 
 # -----------------------------
