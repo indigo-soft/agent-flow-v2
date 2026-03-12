@@ -107,6 +107,12 @@ git checkout -b feature/1234-workflow-integration
 
 ## Commit Messages
 
+> 💡 **Commit Message Template:** The project includes a `.gitmessage` template that shows all
+> valid types and scopes. Run `pnpm setup` after cloning to configure it automatically, or manually:
+> ```bash
+> git config commit.template .gitmessage
+> ```
+
 ### Формат (Conventional Commits)
 
 ```

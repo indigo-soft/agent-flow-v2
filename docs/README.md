@@ -1,14 +1,10 @@
 # Documentation
 
-## 📊 Documentation Audit (NEW!)
+## 📊 Audit Reports
 
-**Дата останнього аудиту:** 2026-01-27
+Project audit reports and task lists are stored in [`logs/reports/`](../logs/reports/).
 
-- 📄 **[Audit Summary](DOCUMENTATION_AUDIT_SUMMARY.md)** — швидкий огляд (5 хв)
-- 📊 **[Full Audit Report](DOCUMENTATION_AUDIT_REPORT.md)** — детальний аналіз (20 хв)
-- 📋 **[Action Plan](DOCUMENTATION_ACTION_PLAN.md)** — план покращення документації
-
-> **Оцінка документації: 7.5/10** (після впровадження рекомендацій: 9/10)
+Latest: [2026-03-12 Project Audit](../logs/reports/2026-03-12-project-audit.md) · [Task List](../logs/reports/2026-03-12-tasklist.md)
 
 ---
 

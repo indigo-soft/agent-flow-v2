@@ -4,10 +4,10 @@ This document outlines the planned development path for **agent-flow-v2**.
 
 ## Phase 1: Foundation (Current)
 
-- [x] Monorepo structure setup
+- [x] Project structure setup (single-package, not a multi-package monorepo)
 - [x] Architecture documentation
 - [x] Tech stack selection (ADRs)
-- [x] Basic CI/CD setup
+- [ ] Basic CI/CD setup (GitHub Actions workflows pending — see INF-02)
 - [x] Backend & Frontend skeletons
 
 ## Phase 2: Core Functionality

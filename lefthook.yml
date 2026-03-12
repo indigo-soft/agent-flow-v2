@@ -32,7 +32,7 @@ pre-push:
 
     # Run tests
     test:
-      run: pnpm test --bail --findRelatedTests
+      run: pnpm test --bail --passWithNoTests
       skip:
         - merge
         - rebase

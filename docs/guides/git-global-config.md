@@ -25,3 +25,11 @@ git config --global core.editor "code --wait"  # VS Code
 # або
 
 git config --global core.editor "vim"
+
+# Set commit message template (run once after cloning)
+
+git config commit.template .gitmessage
+
+# Or use the project setup script which does this automatically:
+
+# pnpm setup

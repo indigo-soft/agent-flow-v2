@@ -266,6 +266,28 @@ agent-flow-v2/
     - [API Documentation](docs/api/README.md)
     - [Event Schema](docs/api/events.md)
 
+## Available Scripts
+
+| Script                      | Description                              |
+|-----------------------------|------------------------------------------|
+| `pnpm dev`                  | Start backend + dashboard in dev mode    |
+| `pnpm build`                | Build backend + dashboard for production |
+| `pnpm test`                 | Run all unit tests                       |
+| `pnpm lint`                 | Lint all TypeScript/JavaScript files     |
+| `pnpm format`               | Format all files with Prettier           |
+| `pnpm type-check`           | TypeScript type check                    |
+| `pnpm setup`                | One-time project setup after clone       |
+| `pnpm release`              | Create a new release                     |
+| `pnpm check:structure`      | Validate project directory structure     |
+| `pnpm generate:agent`       | Scaffold a new agent module              |
+| `pnpm generate:api`         | Scaffold a new API endpoint              |
+| `pnpm generate:integration` | Scaffold a new integration               |
+| `pnpm prisma:migrate`       | Run database migrations (dev)            |
+| `pnpm prisma:studio`        | Open Prisma Studio                       |
+
+## Security
+
+Please report security vulnerabilities responsibly. See [SECURITY.md](SECURITY.md) for our disclosure policy.
 ## Contributing
 
 Прочитайте [CONTRIBUTING.md](CONTRIBUTING.md) перед тим як почати розробку.

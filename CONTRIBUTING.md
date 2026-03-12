@@ -192,6 +192,10 @@ pnpm format:check  # Check formatting
 
 - Перевірте [документацію](docs)
 
+## 🔒 Security
+
+If you discover a security vulnerability, **do not open a public GitHub issue**.
+Follow the responsible disclosure process described in [SECURITY.md](SECURITY.md).
 ## 📜 License
 
 Контрибутячи, ви погоджуєтесь, що ваш код буде під [MIT License](LICENSE.md).

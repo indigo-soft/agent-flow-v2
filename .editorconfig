@@ -16,6 +16,11 @@ ij_smart_tabs = false
 ij_visual_guides =
 ij_wrap_on_typing = false
 
+# JavaScript / TypeScript — match Prettier tabWidth: 2
+[{*.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs,*.mts,*.cts}]
+indent_size = 2
+tab_width = 2
+
 [{*.ats,*.cts,*.mts,*.ts}]
 ij_continuation_indent_size = 4
 ij_typescript_align_imports = false
