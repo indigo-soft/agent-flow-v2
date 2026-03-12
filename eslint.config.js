@@ -101,7 +101,7 @@ module.exports = defineConfig([{
         },
     },
 }, {
-    files: ["src/dashboard/**/*.{ts,tsx,js,jsx}"],
+    files: ["src/components/dashboard/**/*.{ts,tsx,js,jsx}"],
 
     extends: fixupConfigRules(compat.extends(
         "next/core-web-vitals",

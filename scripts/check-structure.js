@@ -10,24 +10,53 @@ if (!fs.existsSync(path.join(__dirname, '../src'))) {
     errors.push('❌ src/ directory not found');
 }
 
-// Check required top-level modules
+// Check top-level architecture dirs (ADR-024: Flat Modular Architecture with Shared Layer)
+const requiredTopLevel = ['modules', 'components'];
+requiredTopLevel.forEach(dir => {
+    const dirPath = path.join(__dirname, '../src', dir);
+    if (!fs.existsSync(dirPath)) {
+        errors.push(`⚠️  Warning: src/${dir}/ not found (required by ADR-024)`);
+    }
+});
+
+// Check domain modules
 const requiredModules = [
-    'agents',
+    'architect-agent',
+    'workflow-agent',
+    'code-review-agent',
+    'documentation-agent',
+];
+requiredModules.forEach(mod => {
+    const modPath = path.join(__dirname, '../src/modules', mod);
+    if (!fs.existsSync(modPath)) {
+        errors.push(`⚠️  Warning: src/modules/${mod}/ not found (might not be created yet)`);
+    }
+});
+
+// Check shared components
+const requiredComponents = [
     'api',
-    'dashboard',
-    'core',
     'database',
     'queue',
-    'integrations',
     'logger',
     'config',
-    'shared',
+    'ai-provider',
+    'github',
+    'dashboard',
 ];
+requiredComponents.forEach(comp => {
+    const compPath = path.join(__dirname, '../src/components', comp);
+    if (!fs.existsSync(compPath)) {
+        errors.push(`⚠️  Warning: src/components/${comp}/ not found (might not be created yet)`);
+    }
+});
 
-requiredModules.forEach(module => {
-    const modulePath = path.join(__dirname, '../src', module);
-    if (!fs.existsSync(modulePath)) {
-        errors.push(`⚠️  Warning: src/${module}/ not found (might not be created yet)`);
+// Warn about leftover legacy directories (pre-ADR-024 structure)
+const legacyDirs = ['agents', 'api', 'dashboard', 'core', 'database', 'queue', 'integrations', 'logger', 'config', 'shared'];
+legacyDirs.forEach(dir => {
+    const dirPath = path.join(__dirname, '../src', dir);
+    if (fs.existsSync(dirPath)) {
+        errors.push(`⚠️  Legacy directory found: src/${dir}/ — migrate to src/modules/ or src/components/ (see ADR-024)`);
     }
 });
 
@@ -59,14 +88,14 @@ function checkNaming(dir, level = 0) {
 
 try {
     checkNaming(path.join(__dirname, '../src'));
-} catch (error) {
+} catch {
     // Ignore if src/ doesn't exist yet
 }
 
 if (errors.length > 0) {
     console.log('\n🔍 Structure Check Results:\n');
     errors.forEach(error => console.log(error));
-    console.log('\nSee docs/adr/018-file-structure-flat-modular.md for guidelines\n');
+    console.log('\nSee docs/adr/024-flat-modular-architecture-with-shared-layer.md for guidelines\n');
 
     // Don't fail commit, just warn
     // process.exit(1);

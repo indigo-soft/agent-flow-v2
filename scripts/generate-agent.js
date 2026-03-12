@@ -20,11 +20,11 @@ const pascalName = kebabName
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
-const agentDir = path.join(__dirname, '../src/agents', kebabName);
+const agentDir = path.join(__dirname, '../src/modules', `${kebabName}-agent`);
 
 // Check if already exists
 if (fs.existsSync(agentDir)) {
-    console.error(`❌ Error: Agent "${kebabName}" already exists`);
+    console.error(`❌ Error: Agent "${kebabName}-agent" already exists`);
     process.exit(1);
 }
 
@@ -197,7 +197,7 @@ TODO: Describe configuration options
 ## Usage
 
 \`\`\`typescript
-import { ${pascalName}Service } from '@agents/${kebabName}';
+import { ${pascalName}Service } from '@modules/${kebabName}-agent';
 
 // TODO: Add usage examples
 \`\`\`
@@ -219,35 +219,35 @@ Object.entries(files).forEach(([filename, content]) => {
     fs.writeFileSync(path.join(agentDir, filename), content);
 });
 
-// Update agents.module.ts (barrel)
-const agentsModulePath = path.join(__dirname, '../src/agents/agents.module.ts');
-if (fs.existsSync(agentsModulePath)) {
-    let agentsModule = fs.readFileSync(agentsModulePath, 'utf8');
+// Update modules barrel file if it exists
+const modulesBarrelPath = path.join(__dirname, '../src/modules/modules.module.ts');
+if (fs.existsSync(modulesBarrelPath)) {
+    let modulesBarrel = fs.readFileSync(modulesBarrelPath, 'utf8');
 
     // Add import
-    const importLine = `import { ${pascalName}Module } from './${kebabName}';`;
-    if (!agentsModule.includes(importLine)) {
-        agentsModule = importLine + '\n' + agentsModule;
+    const importLine = `import { ${pascalName}Module } from './${kebabName}-agent';`;
+    if (!modulesBarrel.includes(importLine)) {
+        modulesBarrel = importLine + '\n' + modulesBarrel;
     }
 
     // Add to imports array
     const importArrayRegex = /imports:\s*\[([\s\S]*?)]/;
-    const match = agentsModule.match(importArrayRegex);
+    const match = modulesBarrel.match(importArrayRegex);
     if (match && !match[1].includes(`${pascalName}Module`)) {
         const imports = match[1].trim();
         const newImports = imports ? `${imports},\n    ${pascalName}Module` : `${pascalName}Module`;
-        agentsModule = agentsModule.replace(importArrayRegex, `imports: [\n    ${newImports}\n  ]`);
+        modulesBarrel = modulesBarrel.replace(importArrayRegex, `imports: [\n    ${newImports}\n  ]`);
     }
 
-    fs.writeFileSync(agentsModulePath, agentsModule);
-    console.log('✅ Updated agents.module.ts');
+    fs.writeFileSync(modulesBarrelPath, modulesBarrel);
+    console.log('✅ Updated modules.module.ts');
 }
 
 console.log(`
-✅ Agent "${kebabName}" created successfully!
+✅ Agent "${kebabName}-agent" created successfully!
 
 Files created:
-  src/agents/${kebabName}/
+  src/modules/${kebabName}-agent/
     ├── ${kebabName}.module.ts
     ├── ${kebabName}.service.ts
     ├── ${kebabName}.processor.ts

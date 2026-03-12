@@ -103,7 +103,7 @@ git push -u origin feature/0123-my-feature
 - [ ] Додано нові тести (якщо потрібно)
 - [ ] ESLint перевірка пройшла (`pnpm lint`)
 - [ ] Prettier форматування виконано (`pnpm format`)
-- [ ] Type check пройшов (`pnpm typecheck`)
+- [ ] Type check пройшов (`pnpm type-check`)
 - [ ] Оновлено документацію (якщо потрібно)
 - [ ] Commit messages відповідають Conventional Commits
 - [ ] PR має описовий title
@@ -140,7 +140,7 @@ pnpm test --watch
 
 - **ESLint** для лінтингу
 - **Prettier** для форматування
-- **Husky** для git hooks
+- **Lefthook** для git hooks
 
 Усе запускається автоматично при коміті.
 

@@ -18,10 +18,10 @@ const pascalName = kebabName
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
-const integrationDir = path.join(__dirname, '../src/integrations', kebabName);
+const integrationDir = path.join(__dirname, '../src/components', kebabName);
 
 if (fs.existsSync(integrationDir)) {
-    console.error(`❌ Error: Integration "${kebabName}" already exists`);
+    console.error(`❌ Error: Component "${kebabName}" already exists in src/components/`);
     process.exit(1);
 }
 
@@ -200,7 +200,7 @@ ${kebabName.toUpperCase()}_TIMEOUT="5000"
 ## Usage
 
 \`\`\`typescript
-import { ${pascalName}Service } from '@integrations/${kebabName}';
+import { ${pascalName}Service } from '@components/${kebabName}';
 
 constructor(private readonly ${kebabName}: ${pascalName}Service) {}
 
@@ -231,10 +231,10 @@ Object.entries(files).forEach(([filename, content]) => {
 });
 
 console.log(`
-✅ Integration "${kebabName}" created successfully!
+✅ Component "${kebabName}" created successfully!
 
 Files created:
-  src/integrations/${kebabName}/
+  src/components/${kebabName}/
     ├── ${kebabName}.module.ts
     ├── ${kebabName}.service.ts
     ├── ${kebabName}.config.ts

@@ -197,8 +197,8 @@ pnpm lint
 # Format
 pnpm format
 
-# Type check
-pnpm typecheck
+    # Type check
+    pnpm type-check
 
 # Test
 pnpm test
@@ -214,28 +214,38 @@ pnpm test
 
 ## Структура проєкту
 
-Використовується **Flat Modular Structure** (див. [ADR-018](docs/adr/018-file-structure-flat-modular.md)):
+Використовується **Flat Modular Architecture with Shared Layer** (
+див. [ADR-024](docs/adr/024-flat-modular-architecture-with-shared-layer.md)):
 
 ```
-ai-workflow-assistant/
-├── src/                    # 🎯 ВЕСЬ КОД ТУТ
-│   ├── agents/             # 🤖 AI Агенти (architect, workflow, etc.)
-│   ├── api/                # 🌐 Backend API (REST)
-│   ├── dashboard/          # 🎨 Frontend (Next.js)
-│   ├── core/               # 🧠 Shared backend (guards, filters, etc.)
-│   ├── database/           # 🗄️ Prisma + models
-│   ├── queue/              # 📬 BullMQ
-│   ├── integrations/       # 🔌 GitHub, AI Provider
-│   ├── logger/             # 📝 Pino
-│   ├── config/             # ⚙️ Configuration
-│   ├── shared/             # 🔗 Shared між backend/frontend
-│   ├── app.module.ts       # Root module
-│   └── main.ts             # Entry point
-├── tests/                  # 🧪 E2E tests
-├── scripts/                # 🛠️ Utility scripts
-├── docs/                   # 📚 Documentation
+agent-flow-v2/
+├── src/                         # 🎯 ВЕСЬ КОД ТУТ
+│   ├── modules/                 # 🤖 Domain modules (бізнес-логіка)
+│   │   ├── architect-agent/     #    AI агент аналізу та планування
+│   │   ├── workflow-agent/      #    AI агент виконання завдань
+│   │   ├── code-review-agent/   #    AI агент code review
+│   │   └── documentation-agent/ #   AI агент документації
+│   └── components/              # ⚙️  Shared components (інфраструктура)
+│       ├── api/                 # 🌐 API Gateway
+│       ├── database/            # 🗄️  Database service (Prisma)
+│       ├── queue/               # 📬 Event Queue (BullMQ)
+│       ├── logger/              # 📝 Logging (Pino)
+│       ├── config/              # ⚙️  Configuration
+│       ├── ai-provider/         # 🤖 AI Provider integration
+│       ├── github/              # 🔌 GitHub integration
+│       └── dashboard/           # 🎨 Frontend (Next.js)
+├── tests/                       # 🧪 E2E tests
+├── scripts/                     # 🛠️  Utility scripts
+├── docs/                        # 📚 Documentation
 └── [config files]
 ```
+
+**Правила архітектури:**
+
+- 🔒 `modules/` — тільки доменні модулі, **незалежні** один від одного
+- 📬 Взаємодія між модулями — **тільки через Event Queue** (рідко через HTTP)
+- ⚙️ `components/` — shared інфраструктура, може залежати від інших компонентів
+- ❌ `components/` **НЕ може** залежати від `modules/` (виняток: `components/api/`)
 
 ## Документація
 

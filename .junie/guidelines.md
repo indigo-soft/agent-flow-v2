@@ -19,7 +19,13 @@ Architect, Workflow, Code Review, Documentation).
 
 ##### Branch Names
 
-Format: `<type>/<issue-number>-<short-description>` (e.g., `feature/123-architect-agent`)
+Format: `<type>/<issue-number>-<short-description>` (e.g., `feature/0123-architect-agent`)
+
+**Rules:**
+
+- Issue number is **REQUIRED** (minimum 4 digits with leading zeros if needed)
+- All changes must be linked to an issue
+- Examples: `feature/0001-initial-setup`, `fix/0042-bug-fix`, `feature/1234-new-feature`
 
 ##### Commit Format
 
@@ -90,9 +96,9 @@ export function Component({prop}: ComponentProps) {
     };
 
     return (
-            <div className = "flex flex-col gap-4" >
-                    {/* JSX with Tailwind */}
-                    < /div>
+            <div className="flex flex-col gap-4">
+                {/* JSX with Tailwind */}
+            </div>
     );
 }
 ```
@@ -109,9 +115,39 @@ export function Component({prop}: ComponentProps) {
 
 #### 5. File Paths
 
-- **Backend**: `apps/backend/src/modules/<module-name>/`
-- **Frontend**: `apps/dashboard/components/` (UI components in `ui/` subdirectory)
-- **Shared**: `packages/shared/src/`
+**Architecture:** Flat Modular Architecture with Shared
+Layer ([ADR-024](../docs/adr/024-flat-modular-architecture-with-shared-layer.md))
+
+```
+src/
+├── modules/         # Domain modules (business logic)
+│   ├── architect-agent/
+│   ├── workflow-agent/
+│   ├── code-review-agent/
+│   └── documentation-agent/
+│
+└── components/      # Shared components (technical infrastructure)
+    ├── api/                # API Gateway
+    ├── database/           # Database service (Prisma)
+    ├── queue/              # Event Queue (BullMQ)
+    ├── logger/             # Logging (Pino)
+    ├── config/             # Configuration
+    ├── ai-provider/        # AI Provider integration
+    ├── github/             # GitHub integration
+    └── dashboard/          # Frontend (Next.js)
+```
+
+**TypeScript Paths:**
+
+- `@modules/*` — domain modules (`src/modules/*`)
+- `@components/*` — shared components (`src/components/*`)
+
+**Key Rules:**
+
+- 🔒 Domain modules (`modules/`) are independent of each other
+- 📬 Interaction only through Event Queue (rarely via HTTP)
+- ⚙️ Domain modules use only shared components
+- ❌ Shared components CANNOT depend on domain modules (except `components/api/`)
 
 #### 6. Testing
 
@@ -122,14 +158,16 @@ export function Component({prop}: ComponentProps) {
 
 The project uses:
 
-- **Husky** & **lint-staged**: Pre-commit checks.
-- **commitlint**: Conventional commit validation.
+- **Lefthook**: Git hooks (pre-commit, commit-msg, pre-push).
+- **lint-staged**: Run linters only on staged files.
+- **commitlint**: Conventional commit message validation (scope is **REQUIRED**).
 - **ESLint** & **Prettier**: Linting and formatting (format on save recommended).
 
 #### 8. Documentation & References
 
 Reference these for any architectural changes:
 
+- **Architecture Guide**: `docs/guides/architecture.md`
 - **Architecture Overview**: `docs/architecture/overview.md`
 - **ADR Index**: `docs/adr/000_README.md`
 - **Git Workflow Guide**: `docs/guides/git-workflow.md`

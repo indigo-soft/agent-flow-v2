@@ -21,7 +21,7 @@ const singularPascal = pascalName.endsWith('s')
     ? pascalName.slice(0, -1)
     : pascalName;
 
-const apiDir = path.join(__dirname, '../src/api', kebabName);
+const apiDir = path.join(__dirname, '../src/components/api', kebabName);
 
 if (fs.existsSync(apiDir)) {
     console.error(`❌ Error: API endpoint "${kebabName}" already exists`);
@@ -34,7 +34,7 @@ fs.mkdirSync(apiDir, {recursive: true});
 const moduleTemplate = `import { Module } from '@nestjs/common';
 import { ${pascalName}Controller } from './${kebabName}.controller';
 import { ${pascalName}Service } from './${kebabName}.service';
-import { DatabaseModule } from '@database/database.module';
+import { DatabaseModule } from '@components/database';
 
 @Module({
   imports: [DatabaseModule],
@@ -94,7 +94,7 @@ export class ${pascalName}Controller {
 `;
 
 const serviceTemplate = `import { Injectable, NotFoundException, Logger } from '@nestjs/common';
-import { PrismaService } from '@database/prisma.service';
+import { PrismaService } from '@components/database';
 import { Create${singularPascal}Dto, Update${singularPascal}Dto, ${singularPascal}FilterDto } from './dtos';
 
 @Injectable()
@@ -214,7 +214,7 @@ const typesTemplate = `export interface ${singularPascal} {
 const specTemplate = `import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 import { ${pascalName}Service } from './${kebabName}.service';
-import { PrismaService } from '@database/prisma.service';
+import { PrismaService } from '@components/database';
 
 describe('${pascalName}Service', () => {
   let service: ${pascalName}Service;
@@ -319,7 +319,7 @@ console.log(`
 ✅ API endpoint "${kebabName}" created successfully!
 
 Files created:
-  src/api/${kebabName}/
+  src/components/api/${kebabName}/
     ├── ${kebabName}.module.ts
     ├── ${kebabName}.controller.ts
     ├── ${kebabName}.service.ts
@@ -329,7 +329,7 @@ Files created:
     └── index.ts
 
 Next steps:
-  1. Add Prisma model in src/database/prisma/schema.prisma:
+  1. Add Prisma model in src/components/database/prisma/schema.prisma:
      
      model ${singularPascal} {
        id          String   @id @default(cuid())
