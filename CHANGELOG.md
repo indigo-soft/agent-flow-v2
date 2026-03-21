@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1](https://github.com/indigo-soft/agent-flow-v2/compare/v0.1.0...v0.1.1) (2026-03-21)
+
+### Bug Fixes
+
+* **docs:** correct typos and improve clarity in multiple documentation files ([87aad5d](https://github.com/indigo-soft/agent-flow-v2/commit/87aad5dc04cf964e5cffa7e3ee80927edc9e9235))
+
 ## 0.1.0 (2026-03-12)
 
 ### Features
