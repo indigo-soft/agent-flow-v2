@@ -21,7 +21,7 @@ This guide helps resolve common issues encountered during development or deploym
 
 ### 3. Agent Execution Hangs
 
-- **Symptom**: BullMQ job remains in "active" or "waiting" state for too long.
+- **Symptom**: BullMQ job remains in the "active" or "waiting" state for too long.
 - **Solution**:
   - Check logs for the specific agent module.
   - Verify AI Provider API limits (Rate limits).

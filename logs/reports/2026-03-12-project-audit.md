@@ -18,7 +18,7 @@
 | **Overall**         | **8.5/10** | **0 critical, 2 important, 4 minor** |
 
 **Key message:** The project has progressed significantly from a skeleton to a well-configured foundation.
-All critical issues from the initial audit have been resolved. Remaining work is focused on expanding
+All critical issues from the initial audit have been resolved. The remaining work is focused on expanding
 stub documentation and implementing actual source code (Phase 2+ per ROADMAP.md).
 ---
 
@@ -97,7 +97,7 @@ Audit file references removed. Links to `logs/reports/` added.
 
 From 42 lines to 300+ lines. Covers TypeScript patterns, NestJS module/service/DTO/controller
 templates, React/Next.js patterns, TanStack Query, logging conventions, error handling,
-anti-patterns table.
+antipatterns table.
 
 ### 4.3 ✅ RESOLVED — `testing.md` fixed and expanded (was DOC-03)
 

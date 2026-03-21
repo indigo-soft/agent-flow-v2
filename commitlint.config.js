@@ -1,8 +1,10 @@
+// noinspection JSUnusedLocalSymbols
+
 module.exports = {
     extends: ['@commitlint/config-conventional'],
     rules: {
         // Scope is REQUIRED
-        'scope-empty': [2, 'never'], // ERROR if scope is missing
+      'scope-empty': [2, 'never'], // ERROR if the scope is missing
         'scope-case': [2, 'always', 'kebab-case'], // scope must be kebab-case
 
         // Type validation
@@ -20,7 +22,7 @@ module.exports = {
                 'chore',    // Maintenance
                 'ci',       // CI/CD changes
                 'build',    // Build system changes
-                'revert',   // Revert previous commit
+              'revert',   // Revert a previous commit
             ],
         ],
 
@@ -44,7 +46,7 @@ module.exports = {
         {
             rules: {
                 'branch-name-format': (parsed, when = 'always', value = {}) => {
-                    // Get current branch name
+                  // Get the current branch name
                     const {execSync} = require('child_process');
                     let branchName;
 
@@ -57,7 +59,7 @@ module.exports = {
                         return [true];
                     }
 
-                    // Allow main branch
+                  // Allow the main branch
                     if (branchName === 'main' || branchName === 'master') {
                         return [true];
                     }

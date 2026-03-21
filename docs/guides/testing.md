@@ -232,7 +232,7 @@ export function createDraftFixture(overrides: Partial<Draft> = {}): Draft {
 ## E2E Tests
 
 E2E tests live in `tests/e2e/` and test the full HTTP request/response cycle against a running server.
-> ⚠️ The E2E test framework has not been selected yet (Supertest vs Playwright API testing). See the ADR backlog.
+> ⚠️ The E2E test framework has not been selected yet (Supertest vs. Playwright API testing). See the ADR backlog.
 > When implemented, E2E tests will:
 
 - Require a test PostgreSQL database and Redis instance

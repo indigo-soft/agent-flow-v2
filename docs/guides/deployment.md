@@ -130,7 +130,7 @@ pnpm setup
 
 ## Database Setup
 
-Generate Prisma client and run migrations:
+Generate a Prisma client and run migrations:
 
 ```bash
 # Generate Prisma client
@@ -254,7 +254,7 @@ server {
     }
     # Frontend (Next.js dashboard)
     location / {
-        proxy_pass http://dashboard\;
+        proxy_pass https://dashboard\;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -294,7 +294,7 @@ sudo systemctl status certbot.timer
 # Backend API health
 curl http://localhost:3000/health
 # Nginx
-curl -I http://your-domain.com/api/health
+curl -I https://your-domain.com/api/health
 # PM2 status
 pm2 status
 # PostgreSQL

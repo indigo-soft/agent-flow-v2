@@ -97,7 +97,7 @@ if (errors.length > 0) {
     errors.forEach(error => console.log(error));
     console.log('\nSee docs/adr/024-flat-modular-architecture-with-shared-layer.md for guidelines\n');
 
-    // Don't fail commit, just warn
+  // Don't fail to commit, just warn
     // process.exit(1);
 } else {
     console.log('✅ File structure looks good!');

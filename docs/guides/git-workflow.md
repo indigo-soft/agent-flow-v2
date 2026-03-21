@@ -72,7 +72,7 @@ git checkout -b feature/1234-workflow-integration
 - Номер issue є **ОБОВ'ЯЗКОВИМ** для всіх гілок
 - Мінімум 4 цифри (додати нулі спереду якщо потрібно)
 - Якщо немає issue — створіть його перед початком роботи
-- Не може бути гілки без номеру issue
+- Не може бути гілки без номера issue
 
 ### Types
 
@@ -101,7 +101,7 @@ git checkout -b feature/1234-workflow-integration
 - `feature/NewFeature` (не CamelCase, немає issue)
 - `myBranch` (немає типу, немає issue)
 - `fix-bug` (не описово, немає типу, немає issue)
-- `feature/123-auth-bug` (менше 4 цифр)
+- `feature/123-auth-bug` (менше ніж 4 цифри)
 - `feature/fix-auth-bug` (немає issue-number)
 - `feature/додавання-функції` (не англійська, немає issue)
 

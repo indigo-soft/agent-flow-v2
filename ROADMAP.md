@@ -15,7 +15,7 @@ This document outlines the planned development path for **agent-flow-v2**.
 - [ ] **Architect Agent**:
     - [ ] Conversation analysis engine
     - [ ] Plan draft generation
-    - [ ] Task hierarchy creation (Epic -> Task -> Subtask)
+  - [ ] Task hierarchy creation (Epic → Task → Subtask)
 - [ ] **Database & Queue**:
     - [ ] Prisma schema for conversations, tasks, and agents
     - [ ] BullMQ integration for background processing

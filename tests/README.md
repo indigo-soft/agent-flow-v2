@@ -35,7 +35,7 @@ pnpm test -- --coverage
 
 End-to-end tests are placed in `tests/e2e/` and test the application from the outside (HTTP requests to the running
 API).
-> ⚠️ E2E test framework has not been selected yet. See ADR backlog.
+> ⚠️ E2E test framework has not been selected yet. See the ADR backlog.
 
 ## Fixtures
 

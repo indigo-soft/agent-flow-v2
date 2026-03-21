@@ -6,7 +6,7 @@
 
 ### `task-started`
 
-- **Trigger**: When a task is moved to "In Progress".
+- **Trigger**: When a task is moved to the "In Progress" state.
 - **Payload**: `{ "taskId": "string", "branchName": "string" }`
 - **Consumer**: `WorkflowAgent`
 - **Action**: Creates a feature branch on GitHub.
