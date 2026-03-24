@@ -1,0 +1,99 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "description": "Renovate dependency automation — agent-flow-v2",
+
+  "timezone": "Europe/Kyiv",
+  "schedule": ["every 3 days"],
+
+  "separateMajorMinor": true,
+  "separateMultipleMajor": false,
+
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10,
+  "rebaseWhen": "conflicted",
+
+  "labels": ["dependencies"],
+  "commitMessagePrefix": "chore(deps):",
+
+  "automerge": false,
+  "minimumReleaseAge": "3 days",
+
+  "packageRules": [
+    {
+      "description": "Auto-merge patch and minor updates after CI passes",
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true,
+      "addLabels": ["auto-merge"]
+    },
+    {
+      "description": "Major updates require manual review — always a separate PR",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "addLabels": ["major-update", "needs-review"]
+    },
+
+    {
+      "description": "NestJS Framework (critical)",
+      "groupName": "NestJS Framework",
+      "matchPackagePatterns": ["^@nestjs/"],
+      "addLabels": ["nestjs"]
+    },
+    {
+      "description": "TypeScript and type-level tools (critical)",
+      "groupName": "TypeScript",
+      "matchPackageNames": ["typescript"],
+      "matchPackagePatterns": ["^@typescript-eslint/"],
+      "addLabels": ["typescript"]
+    },
+    {
+      "description": "Testing framework — Jest",
+      "groupName": "Testing (Jest)",
+      "matchPackageNames": ["jest", "ts-jest"],
+      "matchPackagePatterns": ["^@jest/", "^jest-"],
+      "addLabels": ["testing"]
+    },
+    {
+      "description": "Linters and formatters — ESLint, Prettier, all plugins",
+      "groupName": "Linters & Formatters",
+      "matchPackageNames": ["eslint", "prettier", "globals", "eslint-import-resolver-typescript"],
+      "matchPackagePatterns": ["^eslint-plugin-", "^eslint-config-", "^@eslint/"],
+      "addLabels": ["linting"]
+    },
+    {
+      "description": "Frontend — Next.js, TanStack Query",
+      "groupName": "Frontend (Next.js)",
+      "matchPackageNames": ["next"],
+      "matchPackagePatterns": ["^@tanstack/"],
+      "addLabels": ["frontend"]
+    },
+    {
+      "description": "Build and dev tools — git hooks, commit conventions, task runner",
+      "groupName": "Build & Dev Tools",
+      "matchPackageNames": ["lefthook", "npm-run-all"],
+      "matchPackagePatterns": ["^@commitlint/"],
+      "addLabels": ["tooling"]
+    },
+    {
+      "description": "Release automation — release-it and plugins",
+      "groupName": "Release Tools",
+      "matchPackageNames": ["release-it"],
+      "matchPackagePatterns": ["^@release-it/"],
+      "addLabels": ["release"]
+    },
+    {
+      "description": "Database and caching — Prisma, keyv, cache-manager",
+      "groupName": "Database & Caching",
+      "matchPackageNames": [
+        "prisma",
+        "keyv",
+        "cache-manager",
+        "prettier-plugin-prisma"
+      ],
+      "matchPackagePatterns": ["^@keyv/", "^@prisma/"],
+      "addLabels": ["database"]
+    }
+  ]
+}
