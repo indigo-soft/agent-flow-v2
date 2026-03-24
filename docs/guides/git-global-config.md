@@ -26,7 +26,7 @@ git config --global core.editor "code --wait"  # VS Code
 
 git config --global core.editor "vim"
 
-# Set commit message template (run once after cloning)
+# Set the commit message template (run once after cloning)
 
 git config commit.template .gitmessage
 

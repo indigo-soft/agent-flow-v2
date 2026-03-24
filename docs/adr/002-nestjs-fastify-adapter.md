@@ -11,7 +11,7 @@ NestJS за замовчуванням використовує Express.js як 
 Проєкт матиме:
 
 - REST API для Dashboard (CRUD операції з завданнями, чернетками)
-- Webhook endpoints (можливо у майбутньому для GitHub webhooks)
+- Webhook endpoints (можливо в майбутньому для GitHub webhooks)
 - Health check endpoints
 
 Вимоги:
@@ -29,7 +29,7 @@ NestJS за замовчуванням використовує Express.js як 
 ### Переваги Fastify:
 
 1. **Performance**
-    - В 2-3 рази швидший за Express.js у benchmarks
+    - У 2–3 рази швидший за Express.js у benchmarks
     - Оптимізований JSON serializer
     - Нижчий overhead
 
@@ -43,8 +43,8 @@ NestJS за замовчуванням використовує Express.js як 
 
 4. **Сумісність з NestJS**
     - Офіційний `@nestjs/platform-fastify` пакет
-    - Всі декоратори NestJS працюють
-    - Всі модулі NestJS сумісні
+   - Усі декоратори NestJS працюють
+   - Усі модулі NestJS сумісні
 
 ### Недоліки:
 

@@ -13,11 +13,11 @@ Accepted
 - 🔐 **Вихідний код** — приватний код компанії/користувача
 - 🔐 **Плани розробки** — конфіденційна бізнес-логіка
 - 🔐 **Коментарі до PR** — можуть містити конфіденційну інформацію
-- 🔐 **Database credentials** — доступ до PostgreSQL, Redis
+- 🔐 **Облікові дані БД(credentials)** — доступ до PostgreSQL, Redis
 
 Вимоги:
 
-- **Zero third-party access** — всі дані тільки на наших серверах (див. ADR-017)
+- **Zero third-party access** — усі дані тільки на наших серверах (див. ADR-017)
 - **Self-hosted** — без зовнішніх managed сервісів
 - **Encryption at rest** — конфіденційні дані зашифровані
 - **Encryption in transit** — всі з'єднання через HTTPS/TLS
@@ -28,7 +28,7 @@ Threats:
 
 - 🔴 **Data leaks** — витік токенів, API ключів
 - 🔴 **Unauthorized access** — доступ до чужих даних
-- 🔴 **Man-in-the-middle** — перехоплення трафіку
+- 🔴 **Man-In-The-Middle(MITM)** — перехоплення трафіку
 - 🔴 **SQL injection** — атака через API
 - 🔴 **XSS/CSRF** — атаки на frontend
 - 🔴 **Secrets in logs** — випадкове логування токенів
@@ -76,8 +76,8 @@ PubkeyAuthentication yes
 **Переваги:**
 
 - ✅ Повний контроль над інфраструктурою
-- ✅ Zero third-party access
-- ✅ Compliance з GDPR, SOC2 (якщо потрібно)
+- ✅ Відсутність доступу у сторонніх суб’єктів (third‑party)
+- ✅ Дотримання вимог GDPR, SOC2 (якщо потрібно)
 
 ---
 
@@ -125,7 +125,7 @@ server {
 }
 ```
 
-#### B. Internal connections (Backend ↔ Database)
+#### B. Внутрішні комунікації (бекенд ↔ БД)
 
 ```typescript
 // src/database/prisma/schema.prisma
@@ -147,8 +147,8 @@ REDIS_TLS="true"
 **Переваги:**
 
 - ✅ Захист від MITM атак
-- ✅ A+ rating на SSL Labs
-- ✅ HSTS preload eligible
+- ✅ A+ рейтинг на [SSL Labs](https://www.ssllabs.com/ssltest)
+- ✅ Відповідає вимогам для списку HSTS preload
 
 ---
 
@@ -290,9 +290,9 @@ export class AdminController {
 
 **Переваги:**
 
-- ✅ Stateless authentication (JWT)
-- ✅ Fine-grained access control (RBAC)
-- ✅ Short-lived tokens (1h, потім refresh)
+- ✅ Безстанова автентифікація (JWT)
+- ✅ Деталізований контроль доступу (RBAC)
+- ✅ Короткоживучі токени (1h, потім refresh)
 
 ---
 
@@ -300,7 +300,7 @@ export class AdminController {
 
 #### A. Encryption at Rest (Database)
 
-**Sensitive fields encryption:**
+**Шифрування чутливих даних:**
 
 ```typescript
 // src/shared/utils/encryption.util.ts
@@ -373,31 +373,32 @@ export class GithubService {
 
 **Що шифрувати:**
 
-- ✅ GitHub tokens
-- ✅ AI Provider API keys
-- ✅ Refresh tokens
-- ✅ Sensitive user data (якщо є)
+- ✅ GitHub-токени
+- ✅ AI Provider API ключі
+- ✅ Refresh-токени (якщо використовуються)
+- ✅ Чутливі користувацькі дані (якщо є)
 
 **Що НЕ шифрувати:**
 
-- ❌ IDs, timestamps (потрібні для queries)
-- ❌ Public data (назви task, статуси)
-- ❌ Hashed passwords (вже захищені bcrypt)
+- ❌ IDs, timestamps (потрібні для запитів та логіки)
+- ❌ Public data (назви завдань, статуси)
+- ❌ Хешовані паролі (уже захищені bcrypt)
 
 #### B. Encryption in Transit
 
-Всі з'єднання через HTTPS/TLS (див. вище).
+Усі з'єднання через HTTPS/TLS (див. вище).
 
 **Переваги:**
 
-- ✅ Захист даних у БД (якщо хтось отримає дамп)
-- ✅ Compliance з data protection regulations
+- ✅ Захист даних у БД (якщо хтось отримає резервну копію)
+- ✅ Захист API ключів від витоку
+- ✅ Відповідність до GDPR та інших стандартів
 
 ---
 
 ### 5. Secrets Management
 
-**Рішення:** Environment variables, НІКОЛИ не в коді
+**Рішення:** Змінні середовища(Environment variables), **НІКОЛИ** не в коді
 
 #### A. Environment Variables
 
@@ -434,7 +435,7 @@ RATE_LIMIT_MAX="100"
 RATE_LIMIT_WINDOW="900000"  # 15 minutes
 ```
 
-**Генерація secrets:**
+**Генерація секретів:**
 
 ```bash
 # JWT Secret (64 chars)
@@ -447,7 +448,7 @@ openssl rand -hex 32
 openssl rand -base64 32
 ```
 
-#### B. Validation
+#### B. Валідація
 
 ```typescript
 // src/config/env.validation.ts
@@ -508,7 +509,7 @@ export class AppModule {
 }
 ```
 
-#### C. .gitignore
+#### C. Правильний .gitignore
 
 ```gitignore
 # Environment files (IMPORTANT!)
@@ -526,7 +527,7 @@ export class AppModule {
 secrets/
 ```
 
-#### D. Git Hooks (prevent commits)
+#### D. Git-хуки (pre- хуки)
 
 ```bash
 # .husky/pre-commit
@@ -547,9 +548,9 @@ pnpm lint-staged
 
 **Переваги:**
 
-- ✅ Secrets не потрапляють у git
-- ✅ Різні secrets для різних environments
-- ✅ Validation при старті застосунку
+- ✅ Секрети не потрапляють у git
+- ✅ Різні секрети для різних середовищ (dev, prod)
+- ✅ Валідація при старті застосунку
 
 ---
 
@@ -585,7 +586,7 @@ export class CreateTaskDto {
 }
 ```
 
-**Prisma (parameterized queries) — захист від SQL Injection:**
+**Prisma (параметризовані запити) — захист від SQL‑інʼєкцій:**
 
 ```typescript
 // ✅ SAFE (Prisma auto-escapes)
@@ -603,9 +604,9 @@ await prisma.$queryRaw`
 
 **Переваги:**
 
-- ✅ Захист від SQL Injection (Prisma)
+- ✅ Захист від SQL‑інʼєкцій (Prisma)
 - ✅ Захист від XSS (sanitization)
-- ✅ Data integrity (validation)
+- ✅ Цілісність даних (через валідацію)
 
 ---
 
@@ -658,7 +659,7 @@ async function bootstrap() {
 }
 ```
 
-**Security Headers (автоматично через Helmet):**
+**HTTP заголовки безпеки (автоматично через Helmet):**
 
 - `X-Frame-Options: DENY` — захист від clickjacking
 - `X-Content-Type-Options: nosniff` — захист від MIME sniffing
@@ -668,7 +669,7 @@ async function bootstrap() {
 
 **Переваги:**
 
-- ✅ A+ rating на Security Headers
+- ✅ A+ рейтинг на [Security Headers](https://securityheaders.com/)
 - ✅ Захист від CSRF, XSS, Clickjacking
 - ✅ Rate limiting (захист від brute-force)
 
@@ -763,7 +764,7 @@ model AuditLog {
 }
 ```
 
-**Usage:**
+**Використання:**
 
 ```typescript
 // src/app.module.ts
@@ -792,7 +793,7 @@ export class AppModule {
 
 ### 9. Dependency Security
 
-**Рішення:** Регулярні оновлення та security audits
+**Рішення:** Регулярні оновлення та аудити безпеки
 
 #### A. npm audit
 
@@ -860,7 +861,7 @@ jobs:
 
 - ✅ Автоматичне виявлення вразливостей
 - ✅ Automatic updates через Dependabot
-- ✅ CI/CD fails якщо є критичні вразливості
+- ✅ Падіння при CI/CD, якщо є критичні вразливості
 
 ---
 
@@ -868,8 +869,8 @@ jobs:
 
 ### Позитивні:
 
-- ✅ **Повний контроль** — всі дані на власних серверах
-- ✅ **Zero third-party access** — ніхто не має доступу до даних
+- ✅ **Повний контроль** — усі дані на власних серверах
+- ✅ **Відсутність доступу третіх сторін** — ніхто не має доступу до даних
 - ✅ **Defense in Depth** — багато рівнів захисту
 - ✅ **Compliance ready** — готовність до GDPR, SOC2
 - ✅ **Audit trail** — можливість розслідувати інциденти
@@ -914,15 +915,15 @@ jobs:
 - [ ] Rate limiting увімкнено
 - [ ] Audit logging працює
 - [ ] Backups налаштовані та зашифровані
-- [ ] SSL certificate auto-renewal
-- [ ] Fail2Ban налаштовано
+- [ ] SSL certificate автооновлення налаштовано
+- [ ] Fail2Ban налаштований
 
 ### Monitoring
 
-- [ ] Security audit щотижня (`pnpm audit`)
-- [ ] Dependabot alerts увімкнено
-- [ ] Audit logs переглядаються щомісяця
-- [ ] Failed login attempts моніторяться
+- [ ] Аудит безпеки щотижня (`pnpm audit`)
+- [ ] Попередження від Dependabot увімкнені
+- [ ] Журнали аудиту переглядаються щомісяця
+- [ ] Невдалі спроби входу моніторяться
 
 ## Security Incident Response Plan
 
@@ -969,10 +970,10 @@ sudo grep "Failed password" /var/log/auth.log
 
 ### 4. Recovery
 
-- Restore з backup якщо потрібно
-- Patch vulnerabilities
-- Deploy fixes
-- Notify affected users (якщо є)
+- Відновлення з резервної копії, якщо потрібно
+- Виправлення вразливості (оновлення коду, залежностей)
+- Розгортання виправлень
+- Повідомити користувачів, яких це стосується (якщо є)
 
 ### 5. Post-Mortem
 

@@ -74,6 +74,8 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 | [023](023-git-hooks-lefthook.md)                          | Git Hooks (Lefthook)                        | Accepted   | 2026-02-11 |
 | [024](024-flat-modular-architecture-with-shared-layer.md) | Flat Modular Architecture with Shared Layer | Accepted   | 2026-02-19 |
 
+[025](025-changelog-release-it.md) Changelog Automation (release-it) Accepted 2026-03-22
+
 ### Tooling & Infrastructure
 
 | #                                                     | Назва                                     | Статус   | Дата       |
@@ -86,8 +88,8 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 ### 1. Скопіюйте template
 
 ```bash
-# Визначте наступний номер (наприклад, 025)
-NEXT_NUM=025
+# Визначте наступний номер (наприклад, 026)
+NEXT_NUM=026
 
 # Створіть файл з описовою назвою
 cp docs/adr/templates/TEMPLATE.md docs/adr/${NEXT_NUM}-your-decision-title.md
@@ -96,7 +98,6 @@ cp docs/adr/templates/TEMPLATE.md docs/adr/${NEXT_NUM}-your-decision-title.md
 Доступні шаблони:
 
 - `templates/TEMPLATE.md` — повний шаблон з усіма секціями
-- `templates/TEMPLATE-SHORT.md` — короткий шаблон для простих рішень
 
 ### 2. Заповніть секції
 
@@ -208,8 +209,8 @@ Proposed → Accepted → Deprecated → Superseded
 
 - ✅ Чистота головної теки ADR (тільки актуальні рішення)
 - ✅ Історія рішень зберігається (архів доступний)
-- ✅ Одразу видно які рішення діють зараз
-- ✅ Легше орієнтуватись новим членам команди
+- ✅ Одразу видно, які рішення діють зараз
+- ✅ Легше орієнтуватися новим членам команди
 
 **Примітка:** Файли в архіві НЕ видаляються, тільки переміщуються. Історія важлива!
 
@@ -248,7 +249,7 @@ ADR можуть мати наступні статуси:
 - **Proposed** — рішення запропоноване, але ще не прийняте
 - **Accepted** — рішення прийняте та впроваджене
 - **Deprecated** — рішення застаріле, але ще використовується
-- **Superseded** — рішення замінене іншим ADR (вказується який)
+- **Superseded** — рішення замінене іншим ADR (указується який)
 - **Rejected** — рішення відхилене
 
 ### Superseded ADRs

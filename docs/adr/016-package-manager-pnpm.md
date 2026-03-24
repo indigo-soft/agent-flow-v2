@@ -352,7 +352,7 @@ packages:
     - 'packages/*'
 ```
 
-### Крок 5: Додати . npmrc (опціонально)
+### Крок 5: Додати .npmrc (опціонально)
 
 ```ini
 auto-install-peers = false

@@ -38,7 +38,7 @@ const response = await this.httpClient.post('http://api/workflow/execute', data)
 ```
 
 **Виняток:** У **рідкісних випадках** доменні модулі можуть взаємодіяти через HTTP-запити, але це **завжди** повинно
-бути задокументовано в README модуля з поясненням чому Event Queue не підходить.
+бути задокументовано в README модуля з поясненням, чому Event Queue не підходить.
 
 #### ✅ Правило #2: Доменні модулі можуть використовувати shared
 
@@ -158,7 +158,7 @@ components/database/
 
 ### Простий модуль (5–10 файлів)
 
-Всі файли в корені:
+Усі файли в корені:
 
 ```
 modules/documentation-agent/
@@ -496,7 +496,7 @@ async getDraftSync(draftId: string) {
 }
 ```
 
-## Міграція існуючого коду
+## Міграція коду, що існує
 
 План міграції описаний в [ADR-024](../adr/024-flat-modular-architecture-with-shared-layer.md), секція "План
 упровадження".

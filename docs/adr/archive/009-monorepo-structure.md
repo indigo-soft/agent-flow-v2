@@ -36,7 +36,7 @@ was [ADR-018](./018-file-structure-flat-modular.md))
 
 1. **Shared types**
    - Один source of truth для типів
-   - Зміни у типах одразу видні в обох проєктах
+   - Зміни в типах одразу видні в обох проєктах
    - Немає десинхронізації
 
 2. **Атомарні зміни**
@@ -46,7 +46,7 @@ was [ADR-018](./018-file-structure-flat-modular.md))
 3. **Простота розробки**
    - Один git clone
    - Одна команда для запуску всього
-   - Легше тестува��и інтеграцію
+   - Легше тестувати інтеграцію
 
 4. **Shared tooling**
    - Один ESLint config
@@ -55,7 +55,7 @@ was [ADR-018](./018-file-structure-flat-modular.md))
 
 ### Недоліки:
 
-- Більший розмір репозиторія
+- Більший розмір репозиторію
 - Треба налаштовувати workspace manager
 
 ## Структура
@@ -174,7 +174,7 @@ import {Task, TaskStatus} from '@repo/shared/types';
 
 - Type safety між frontend та backend
 - Атомарні зміни
-- Простіше р��зробка та code review
+- Простіше розробка та code review
 
 ### Негативні:
 

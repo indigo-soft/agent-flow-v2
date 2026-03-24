@@ -42,8 +42,8 @@ Accepted
 
 - ✅ Простіше — один механізм замість двох
 - ✅ Менше інфраструктури — не треба Prometheus server
-- ✅ Unified — метрики витягуються з тих самих логів що й debug
-- ✅ Self-sufficient — все в одному місці
+- ✅ Unified — метрики витягуються з тих самих логів, що й debug
+- ✅ Self-sufficient — усе в одному місці
 
 **Недоліки:**
 
@@ -120,7 +120,7 @@ debug → Тільки development (детальна діагностика)
 ```
 
 **Production:** `info` та вище (info, warn, error)  
-**Development:** `debug` та вище (всі)
+**Development:** `debug` та вище (усі)
 
 ### 3. Log Files Structure
 
@@ -747,8 +747,8 @@ SLACK_WEBHOOK_URL="https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
 **Slack setup:**
 
 1. Go to https://api.slack.com/apps
-2. Create New App → "From scratch"
-3. Add "Incoming Webhooks" feature
+2. Create a New App → "From scratch"
+3. Add the "Incoming Webhooks" feature
 4. Activate webhooks
 5. "Add New Webhook to Workspace"
 6. Select channel (#alerts)

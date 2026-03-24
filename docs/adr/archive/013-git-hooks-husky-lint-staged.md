@@ -51,7 +51,7 @@ _(Оригінально: Прийнято 2024-01-20, Superseded: 2026-02-11)_
 4. **Гнучкість**
     - Різні hooks (pre-commit, commit-msg, pre-push)
     - Можна запускати будь-які команди
-    - Можн�� скіпнути через `--no-verify` (для edge cases)
+   - Можна пропустити через `--no-verify` (для edge cases)
 
 ### Чому не інші варіанти:
 
@@ -356,7 +356,7 @@ git commit --no-verify -m "WIP: quick fix"
 git push --no-verify
 ```
 
-**⚠️ Використовувати рідко!  Тільки для WIP commits.**
+**⚠️ Використовувати рідко! Тільки для WIP commits.**
 
 ## CI/CD як fallback
 
@@ -437,7 +437,7 @@ chore(deps): update dependencies
 
 ## Примітки
 
-- Husky hooks commitяться у git
+- Husky hooks комітяться у git
 - lint-staged працює тільки з staged файлами (швидко)
 - CI/CD як fallback (якщо хтось обійде hooks)
 - Conventional commits для автогенерації CHANGELOG
