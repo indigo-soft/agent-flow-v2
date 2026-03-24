@@ -13,6 +13,7 @@ This document defines the coding standards and patterns for **agent-flow-v2**.
 - [Logging Conventions](#logging-conventions)
 - [Error Handling](#error-handling)
 - [Anti-Patterns to Avoid](#anti-patterns-to-avoid)
+- [Dependency Management](#dependency-management)
 
 ---
 ## General Principles
@@ -340,3 +341,47 @@ try {
 | Mixing server/client state (Next.js)      | Causes hydration mismatches              | Use TanStack Query + Zustand clearly |
 | Hardcoded secrets in code                 | Security risk                            | Always use `.env` variables          |
 | Modules depending on other domain modules | Violates ADR-024 architecture rules      | Use queue events instead             |
+
+---
+
+## Dependency Management
+
+> **Full guide:** [docs/guides/dependency-updates.md](./dependency-updates.md)  
+> **ADR:** [ADR-026: Automated Dependency Management](../adr/026-dependency-management.md)
+
+### Rules
+
+1. **Never manually edit `pnpm-lock.yaml`** — it is maintained by pnpm and Renovate.
+2. **Never pin an exact version** without a documented reason (e.g., `"jest": "30.0.0"`).
+   Use ranges: `^30.0.0` allows minor/patch updates.
+3. **Always run `pnpm install`** after merging a Renovate/Dependabot PR to sync the lockfile locally.
+4. **Review major-update PRs** before merging — read the changelog and check for breaking changes.
+5. **Do not bypass auto-merge** for patch/minor PRs unless CI is broken.
+
+### Adding a New Dependency
+
+```bash
+# Runtime dependency
+pnpm add some-package
+
+# Dev dependency (preferred for tools, types, linters)
+pnpm add -D some-dev-package
+```
+
+After adding, check which **Renovate group** the package falls into (`renovate.json`)
+and add it explicitly if it doesn't match any existing group pattern.
+
+### Security Vulnerabilities
+
+Renovate applies security patches automatically (patch/minor). For critical vulnerabilities:
+
+```bash
+# Check for known vulnerabilities
+pnpm audit
+
+# Apply available fixes
+pnpm audit --fix
+```
+
+For vulnerabilities without a fix, use `pnpm.overrides` in `package.json` to force a safe version
+(the project already uses this pattern — see `pnpm.overrides` in `package.json`).

@@ -73,15 +73,15 @@ ADR (Architecture Decision Record) — це документ що фіксує:
 | [022](022-api-design-strategy.md)                         | API Design Strategy                         | Accepted   | 2026-01-27 |
 | [023](023-git-hooks-lefthook.md)                          | Git Hooks (Lefthook)                        | Accepted   | 2026-02-11 |
 | [024](024-flat-modular-architecture-with-shared-layer.md) | Flat Modular Architecture with Shared Layer | Accepted   | 2026-02-19 |
-
-[025](025-changelog-release-it.md) Changelog Automation (release-it) Accepted 2026-03-22
+| [025](025-changelog-release-it.md)                        | Changelog Automation (release-it)           | Accepted   | 2026-03-22 |
 
 ### Tooling & Infrastructure
 
-| #                                                     | Назва                                     | Статус   | Дата       |
-|-------------------------------------------------------|-------------------------------------------|----------|------------|
-| [016](016-package-manager-pnpm.md)                    | Package Manager (pnpm)                    | Accepted | 2024-01-20 |
-| [017](017-no-docker-native-development-production.md) | Нативна розробка та deployment без Docker | Accepted | 2024-01-20 |
+| #                                                     | Назва                                                   | Статус   | Дата       |
+|-------------------------------------------------------|---------------------------------------------------------|----------|------------|
+| [016](016-package-manager-pnpm.md)                    | Package Manager (pnpm)                                  | Accepted | 2024-01-20 |
+| [017](017-no-docker-native-development-production.md) | Нативна розробка та deployment без Docker               | Accepted | 2024-01-20 |
+| [026](026-dependency-management.md)                   | Automated Dependency Management (Renovate + Dependabot) | Accepted | 2026-03-24 |
 
 ## Як створити новий ADR?
 
