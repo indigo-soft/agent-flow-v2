@@ -40,7 +40,7 @@ Format: `<type>(<scope>): <description>`
 
 **Rules:**
 
-- Scope must be in kebab-case
+- Scope must be in the kebab-case
 - Scope cannot be empty
 - Description in lowercase (sentence-case)
 - Max 72 characters
