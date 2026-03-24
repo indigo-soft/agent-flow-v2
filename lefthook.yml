@@ -1,36 +1,39 @@
 # Lefthook Configuration
 # Docs: https://github.com/evilmartians/lefthook
 
-# Colors
 colors: true
 
-# Pre-commit hook
+# Pre-commit — format and lint only staged files
 pre-commit:
+  # Sequential: format first so ESLint sees prettier-formatted code
   parallel: false
   commands:
-    # Lint staged files
-    lint-staged:
-      glob: "**/*.{js,jsx,ts,tsx,json,md,prisma,css,scss}"
-      run: npx lint-staged
+    format:
+      glob: "src/**/*.{ts,tsx,js,jsx,json,md,prisma,css,scss}"
+      run: npx prettier --write {staged_files}
+      # Re-stage files changed by prettier
+      stage_fixed: true
 
-# Commit-msg hook
+    lint:
+      glob: "src/**/*.{ts,tsx,js,jsx}"
+      run: npx eslint --fix {staged_files}
+      # Re-stage files auto-fixed by eslint
+      stage_fixed: true
+
+# Commit-msg — validate commit message format
 commit-msg:
   parallel: false
   commands:
-    # Validate commit message format using commitlint
     commitlint:
       run: npx commitlint --edit {1}
 
-
-# Pre-push hook (optional, можна використовувати для додаткових перевірок)
+# Pre-push — full checks before pushing
 pre-push:
   parallel: false
   commands:
-    # Type check
     typecheck:
       run: pnpm type-check
 
-    # Run tests
     test:
       run: pnpm test --bail --passWithNoTests
       skip:
