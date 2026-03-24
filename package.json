@@ -13,6 +13,7 @@
     "start": "node dist/main",
     "start:dashboard": "next start src/components/dashboard",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md,prisma}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,md,prisma}\"",
     "type-check": "tsc --noEmit",
     "test": "jest --passWithNoTests",
