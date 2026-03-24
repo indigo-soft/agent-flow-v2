@@ -10,7 +10,7 @@ pre-commit:
   commands:
     # Lint staged files
     lint-staged:
-      glob: "*.{js,jsx,ts,tsx,json,md,prisma,css,scss}"
+      glob: "**/*.{js,jsx,ts,tsx,json,md,prisma,css,scss}"
       run: npx lint-staged
 
 # Commit-msg hook
