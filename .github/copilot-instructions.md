@@ -166,4 +166,4 @@ describe('ServiceName', () => {
 - **Modules**: `docs/architecture/modules.md`
 - **Git Workflow**: `docs/guides/git-workflow.md`
 - **Naming Conventions**: `docs/guides/naming-conventions.md`
-- **ADRs**: `docs/adr/000_README.md`
+- **ADRs**: `docs/adr/INDEX.md`

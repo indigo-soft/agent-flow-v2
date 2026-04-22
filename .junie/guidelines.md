@@ -169,6 +169,6 @@ Reference these for any architectural changes:
 
 - **Architecture Guide**: `docs/guides/architecture.md`
 - **Architecture Overview**: `docs/architecture/overview.md`
-- **ADR Index**: `docs/adr/000_README.md`
+- **ADR Index**: `docs/adr/INDEX.md`
 - **Git Workflow Guide**: `docs/guides/git-workflow.md`
 - **Naming Conventions**: `docs/guides/naming-conventions.md`

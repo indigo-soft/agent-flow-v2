@@ -1,23 +1,30 @@
-name: 'Renovate'
+name: Renovate
 
 on:
+  # Nightly run — Renovate checks for updates and opens PRs based on renovate.json schedule
   schedule:
-    - cron: '0 0 * * *'
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - edited
+    - cron: '0 2 * * *'
+  # Allow manual trigger (e.g., to force an immediate check)
+  workflow_dispatch: {}
+
+concurrency:
+  group: renovate
+  cancel-in-progress: false
 
 jobs:
   renovate:
+    name: Renovate Dependency Check
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v6
 
-      - name: Configure Renovate
+      - name: Run Renovate
         uses: renovatebot/github-action@v40
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          config-file: .github/renovate.json
+          # Requires a GitHub PAT (classic) with repo scope stored as RENOVATE_TOKEN secret.
+          # See docs/guides/dependency-updates.md for setup instructions.
+          token: ${{ secrets.RENOVATE_TOKEN }}
+        env:
+          # Enable debug logging for troubleshooting (set to "info" in production)
+          LOG_LEVEL: info

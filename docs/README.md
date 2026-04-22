@@ -31,7 +31,7 @@ Latest: [2026-03-12 Project Audit](../logs/reports/2026-03-12-project-audit.md) 
 
 - [Architecture Overview](architecture/overview.md) — загальна архітектура
 - [Module Structure](architecture/modules.md) — структура модулів
-- [Architecture Decision Records](adr/000_README.md) — чому ми обрали ці технології
+- [Architecture Decision Records](adr/README.md) — чому ми обрали ці технології
 
 ## 🔌 API
 
@@ -42,7 +42,7 @@ Latest: [2026-03-12 Project Audit](../logs/reports/2026-03-12-project-audit.md) 
 
 Architecture Decision Records документують важливі архітектурні рішення:
 
-- [ADR Index](adr/000_README.md) — всі ADR
+- [ADR Index](adr/INDEX.md) — всі ADR
 - [ADR Template](adr/templates/TEMPLATE.md) — template для нових ADR
 
 ## ❓ FAQ

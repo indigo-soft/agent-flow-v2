@@ -206,11 +206,11 @@ pnpm test
 
 ## Архітектурні рішення
 
-Всі архітектурні рішення документовані у [Architecture Decision Records (ADR)](docs/adr/000_README.md):
+Всі архітектурні рішення документовані у [Architecture Decision Records (ADR)](docs/adr/README.md):
 
 - [ADR-001: Backend Framework (NestJS)](docs/adr/001-backend-framework-nestjs.md)
 - [ADR-015: Git Workflow](docs/adr/015-git-workflow-branching-strategy.md)
-- [Повний список ADR](docs/adr/000_README.md)
+- [Повний список ADR](docs/adr/INDEX.md)
 
 ## Структура проєкту
 
@@ -259,7 +259,7 @@ agent-flow-v2/
 
 - **Архітектура:**
     - [Architecture Overview](docs/architecture/overview.md)
-    - [ADR Index](docs/adr/000_README.md)
+    - [ADR Index](docs/adr/INDEX.md)
     - [Module Structure](docs/architecture/modules.md)
 
 - **API:**
