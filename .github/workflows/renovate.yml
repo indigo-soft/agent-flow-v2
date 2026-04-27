@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v46.1.9
+        uses: renovatebot/github-action@v46.1.11
         with:
           # Requires a GitHub PAT (classic) with repo scope stored as RENOVATE_TOKEN secret.
           # See docs/guides/dependency-updates.md for setup instructions.
